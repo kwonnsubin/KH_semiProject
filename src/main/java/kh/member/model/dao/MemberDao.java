@@ -1,0 +1,64 @@
+package kh.member.model.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import static kh.common.jdbc.JDBCTemplate.*;
+import kh.member.model.vo.MemberVo;
+
+public class MemberDao {
+	
+	// 회원가입
+	public int enroll(Connection conn, MemberVo vo) {
+		int result = -1;
+		String sql = "INSERT INTO MEMBER VALUES(?, ?, ?, ?)";
+		PreparedStatement pstmt = null;
+		System.out.println(vo);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getNickname());
+			pstmt.setString(2, vo.getPwd());
+			pstmt.setString(3, vo.getPwdcheck());
+			pstmt.setString(4, vo.getEmail());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	// 로그인
+	public MemberVo login(Connection conn, MemberVo vo) {
+		MemberVo result = null;
+		String sql = "select NICKNAME, PWD, EMAIL from member where email=? and pwd=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getEmail());
+			pstmt.setString(2, vo.getPwd());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = new MemberVo();
+				result.setNickname(rs.getString("nickname"));
+				result.setEmail(rs.getString("email"));
+				result.setPwd(rs.getString("pwd"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		System.out.println(result);
+		return result;
+		
+	}
+
+
+}
