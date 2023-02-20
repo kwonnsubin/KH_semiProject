@@ -30,9 +30,8 @@
 					//for문 전 테이블 공간을 초기화
 					var htmlContent = "";
 					data.forEach((recycleList) => {
-						htmlContent += "<a href='#' class='list-group-item list-group-item-action' class='1'>"+recycleList.recycle_name+"</a>";
+						htmlContent += "<a href='<%=request.getContextPath()%>/recycleDetail' class='list-group-item list-group-item-action' class='1'>"+recycleList.recycle_name+"</a>";
 					})
-					console.log(htmlContent)
 					$("#reclcye_List").append(htmlContent);
 				}
 				,   error: function(data) {

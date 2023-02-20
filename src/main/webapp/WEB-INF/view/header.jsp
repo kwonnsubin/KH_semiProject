@@ -31,9 +31,7 @@
 		<div class="d-flex justify-content-end row">
 			<div class="list-group col-3">
 				<div id="reclcye_List">
-		 			<a href="#" class="list-group-item list-group-item-action" class="1">우산</a>
-		 			<a href="#" class="list-group-item list-group-item-action" class="2">A third link item</a>
-		 			<a href="#" class="list-group-item list-group-item-action" class="3">A fourth link item</a>
+				
 				</div>
 			</div>
 		</div>

@@ -41,7 +41,7 @@ public class RecycleController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
+		//검색창
 		String result = null;
 		RecycleService recycleservice = new RecycleService();
 		String recycle_name = request.getParameter("recycle_name");
