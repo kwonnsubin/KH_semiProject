@@ -21,12 +21,13 @@ public class RecycleService {
 		return result;
 	}
 	
-//	// 검색
-//	public String search(String recycle_name) {
-//		String result = null;
-//		Connection conn = getConnection();
-//		result = new RecycleDao().search(conn, recycle_name);
-//		close(conn);
-//		return result;
-//	}
+	// 재활용 상세 내용
+	public List<RecycleVo> recycleDetail(int recycle_code) {
+		List<RecycleVo> result = null;
+		Connection conn = getConnection();
+		result = new RecycleDao().recycleDetail(conn, recycle_code);
+		close(conn);
+		return result;
+		
+	}
 }

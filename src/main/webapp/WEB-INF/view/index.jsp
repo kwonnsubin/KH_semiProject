@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>메인</title>
-<link href="/WEB-INF/view/style.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -27,19 +26,27 @@
 				, data: {recycle_name: $(t).val()}
 				, success: function(data){
 					console.log(data)
-					//for문 전 테이블 공간을 초기화
 					var htmlContent = "";
 					data.forEach((recycleList) => {
-						htmlContent += "<a href='<%=request.getContextPath()%>/recycleDetail' class='list-group-item list-group-item-action' class='1'>"+recycleList.recycle_name+"</a>";
+						//recycleName = "<button type='submit' class='list-group-item list-group-item-action' class='1'>"+recycleList.recycle_name+"</button>";
+						//recycleCode ="<input type='hidden' name='recycleCode' value="+recycleList.recycle_code+">"
+						recycleName ="<a href='<%=request.getContextPath()%>/recycleDetail?recycleCode="+recycleList.recycle_code+"'class='list-group-item list-group-item-action' class='1'>"+recycleList.recycle_name+"</a>";
+						
 					})
-					$("#reclcye_List").append(htmlContent);
+					$("#recycleDetail").append(recycleName);
+					//$("#recycleDetail").append(recycleCode);
 				}
 				,   error: function(data) {
 						alert("실페");
 					}
 			});
 		}
-			//						
+		
+		function handlerClickBtnLogin() {
+			console.log("btnLogin 눌림");
+			location.href="<%=request.getContextPath()%>/login";
+		}
+		
 				
 </script>
 </head>
