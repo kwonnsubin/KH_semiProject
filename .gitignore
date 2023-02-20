@@ -1,6 +1,6 @@
 # Compiled class file
 *.class
-
+Build/
 # Log file
 *.log
 
