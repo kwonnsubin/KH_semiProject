@@ -46,6 +46,9 @@ public class RecycleController extends HttpServlet {
 		RecycleService recycleservice = new RecycleService();
 		String recycle_name = request.getParameter("recycle_name");
 				
+		System.out.println("controller" + recycle_name);
+		
+		
 		List<RecycleVo> recycleList = recycleservice.search(recycle_name);
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();

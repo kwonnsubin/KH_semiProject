@@ -20,14 +20,24 @@
 						<button type="button" class="btn mypage me-2">마이페이지</button>	
 					 <form class="d-flex" role="search">
 						<div class="search d-flex">
-							<input class="form-control me-2" type="text" id="recycle_name" placeholder="예)우산,형광등,프링글스통" 
-								   onkeyup="search(this)">
-							<button class="btn btn-outline-success" type="Search">Search</button>
+							<div>
+								<input class="form-control me-2" type="text" id="recycle_name" placeholder="예)우산,형광등,프링글스통" 
+									   onkeyup="search(this)">
+							</div>
 						</div>
 					</form>
 			</div>
 		</nav>
-	</div>
+		<div class="d-flex justify-content-end row">
+			<div class="list-group col-3">
+				<div id="reclcye_List">
+		 			<a href="#" class="list-group-item list-group-item-action" class="1">우산</a>
+		 			<a href="#" class="list-group-item list-group-item-action" class="2">A third link item</a>
+		 			<a href="#" class="list-group-item list-group-item-action" class="3">A fourth link item</a>
+				</div>
+			</div>
+		</div>
+</div>
 </header>
 	<script type="text/javascript">
 		$(".btn.login").on("click", handlerClickBtnLogin);

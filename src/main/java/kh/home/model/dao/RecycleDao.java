@@ -17,7 +17,6 @@ public class RecycleDao {
 	// 검색
 	public List<RecycleVo> search(Connection conn, String recycle_name) {
 		List<RecycleVo> result = null;
-		System.out.println("dao" + recycle_name);
 		String sql = "select Cf_code, Recycle_code, recycle_name from recycle join cf_code using (recycle_code) join cf using (cf_code) where recycle_name LIKE ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -37,7 +36,7 @@ public class RecycleDao {
 //				vo.setContent(rs.getString(6));
 //				vo.setCf_name(rs.getString(7));					
 				result.add(vo); // vo에 저장한 값들을 ArrayList에 추가
-				System.out.println(result);
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

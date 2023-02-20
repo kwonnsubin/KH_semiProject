@@ -26,13 +26,14 @@
 				, type: "post"
 				, data: {recycle_name: $(t).val()}
 				, success: function(data){
+					console.log(data)
 					//for문 전 테이블 공간을 초기화
 					var htmlContent = "";
 					data.forEach((recycleList) => {
-						htmlContent += "<span>"+recycleList.recycle_name+"<span>";
+						htmlContent += "<a href='#' class='list-group-item list-group-item-action' class='1'>"+recycleList.recycle_name+"</a>";
 					})
-					document.querySelector("#recycleList").innerHTML = htmlContent;
-					
+					console.log(htmlContent)
+					$("#reclcye_List").append(htmlContent);
 				}
 				,   error: function(data) {
 						alert("실페");
