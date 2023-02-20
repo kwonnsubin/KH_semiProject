@@ -3,7 +3,7 @@
 Build/
 # Log file
 *.log
-
+.DS_Store
 # BlueJ files
 *.ctxt
 
@@ -11,7 +11,7 @@ Build/
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.nar
 *.ear
