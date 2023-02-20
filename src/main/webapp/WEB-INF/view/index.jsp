@@ -24,10 +24,15 @@
 			$.ajax({
 				  url: "<%=request.getContextPath()%>/recycleSearch"
 				, type: "post"
-			  	, dataType: "text"
 				, data: {recycle_name: $(t).val()}
 				, success: function(data){
-					console.log(data);
+					//for문 전 테이블 공간을 초기화
+					var htmlContent = "";
+					data.forEach((recycleList) => {
+						htmlContent += "<span>"+recycleList.recycle_name+"<span>";
+					})
+					document.querySelector("#recycleList").innerHTML = htmlContent;
+					
 				}
 				,   error: function(data) {
 						alert("실페");
@@ -43,11 +48,10 @@
 	<div class="container">
 	<h1 class="text-center mb-4">쓰레기 백과사전</h1>
 		<div class="form-group row justify-content-center mb-3">
-			<div class="col-5">
-				<input class="form-control" type="text" id="recycle_name" placeholder="예)우산,형광등,프링글스통" 
+			<div class="col-5" >
+				<input class="form-control" type="text" id="recycle_name" placeholder="예)우산,형광등,프링글스통"
 					   onkeyup="search(this)">
 				<div id="recycleList"></div>
-				<h1 id="selected"></h1>
 			</div>
 			<div class="col-2">
 				<button class="btn btn-primary" onclick="search()" type="button">검색</button>
@@ -57,7 +61,7 @@
 	<h2 class="text-center mb-4">최근 업데이트된 쓰레기</h2>
 	</div>
 	
-dfdf
+
 <script type="text/javascript">
 		$(".btn.login").on("click", handlerClickBtnLogin);
 		$(".btn.logout").on("click", handlerClickBtnLogout);
