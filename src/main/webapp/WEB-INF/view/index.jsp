@@ -10,7 +10,6 @@
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
       body{ background-color: #fbfbfb;}
       /* 본문 내 이미지 요소의 'position' 속성을 'relative'로 지정 */
@@ -21,31 +20,27 @@
       }
 </style>
 <script>
-		function search() {
-			$.aja
+		function search(t) {
+			$.ajax({
 				  url: "<%=request.getContextPath()%>/recycleSearch"
 				, type: "post"
-				, dataType: "json"
-				, data: {recycle_name: $("input[type=text]").val() }
-				, success: function(data){	
-					$.each(data.recycleList, function(index, recycleList) { 
-						var items = [];
-						items.push("<h1>" + recycleList.recycle_name + "</h1>");
-						
-						$("input[type=text]").next().html(items.recycle_name);
-						/* html:items.recycle_name.appendTo($("input[type=text]")); */		
-					});
+			  	, dataType: "text"
+				, data: {recycle_name: $(t).val()}
+				, success: function(data){
+					console.log(data);
 				}
-				,   error: function( request, status, error ){
-				    alert("status : " + request.status + ", message : " + request.responseText + ", error : " + error);
-				}					
-			});	
+				,   error: function(data) {
+						alert("실페");
+					}
+			});
 		}
+			//						
+				
 </script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/header.jsp"/>
-	<div class="container position-absolute top-50 start-50 translate-middle">
+	<div class="container">
 	<h1 class="text-center mb-4">쓰레기 백과사전</h1>
 		<div class="form-group row justify-content-center mb-3">
 			<div class="col-5">
@@ -62,8 +57,8 @@
 	<h2 class="text-center mb-4">최근 업데이트된 쓰레기</h2>
 	</div>
 	
-
-	<script type="text/javascript">
+dfdf
+<script type="text/javascript">
 		$(".btn.login").on("click", handlerClickBtnLogin);
 		$(".btn.logout").on("click", handlerClickBtnLogout);
 		$(".btn.board").on("click", handlerClickBtnCommunity);
@@ -89,6 +84,6 @@
 			console.log("btnMypage 눌림");
 			location.href="<%=request.getContextPath()%>/mypage";
 		}
-	</script>
+</script>
 </body>
 </html>

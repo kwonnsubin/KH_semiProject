@@ -11,8 +11,6 @@ import kh.recycle.model.service.RecycleService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -43,20 +41,18 @@ public class RecycleController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		response.setContentType("application/json;charset=UTF-8");
-//		
-//		RecycleService recycleservice = new RecycleService();
-//		String recycle_name = request.getParameter("recycle_name");
-//		System.out.println(recycle_name);
-//				
-//		List<RecycleVo> resultList = recycleservice.search(recycle_name);
-//		JSONArray jsonArray = JSONArray.fromObject();
-//		PrintWriter out = response.getWriter();
-//		job.putAll(map);
-//		out.println(job);
-//		out.flush();
-//		out.close();
-//		
+
+		String result = null;
+		RecycleService recycleservice = new RecycleService();
+		String recycle_name = request.getParameter("recycle_name");
+				
+		List<RecycleVo> recycleList = recycleservice.search(recycle_name);
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(new Gson().toJson(recycleList));
+		out.flush();
+		out.close();
+	
 		}
 	}
 
