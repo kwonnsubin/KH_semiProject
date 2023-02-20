@@ -11,6 +11,15 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-${data}
+	<c:forEach var="recycleList" items="${data }">
+		<h1>${recycleList.recycle_name}</h1>
+		<div>${recycleList.recycle_tag}</div>
+		<div>재활용:${recycleList.recycle_check}</div>
+		<div>분류:${recycleList.cf_name}</div>
+		<div>버리는방법</div>
+		<div>${recycleList.title}</div>
+		<div>알아두면 좋은 점</div>
+		<div>${recycleList.content}</div>
+	</c:forEach>
 </body>
 </html>

@@ -31,18 +31,7 @@ public class recycleDetailController extends HttpServlet {
 		List<RecycleVo> result = new RecycleService().recycleDetail(recycleCode);
 		
 		request.setAttribute("data", result);
-		response.sendRedirect(request.getContextPath()+"/recycleDetail");
+		request.getRequestDispatcher("/WEB-INF/view/recycle/recycleDetail.jsp").forward(request, response);
     }
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int recycleCode = Integer.parseInt(request.getParameter("recycleCode"));
-		List<RecycleVo> result = new RecycleService().recycleDetail(recycleCode);
-		
-		request.setAttribute("data", result);
-		response.sendRedirect(request.getContextPath()+"/recycleDetail");
-	}
 
 }

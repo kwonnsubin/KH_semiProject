@@ -31,10 +31,10 @@
 		<div class="d-flex justify-content-end row">
 			<div class="list-group col-3">
 				<div id="reclcye_List">
-					<form action="<%=request.getContextPath()%>/recycleDetail" method="post" id="recycleDetail">
-						
+					<!-- <form action="<%=request.getContextPath()%>/recycleDetail" method="post" id="recycleDetail">
 					
-					</form>
+						</form>
+					-->	
 				</div>
 			</div>
 		</div>

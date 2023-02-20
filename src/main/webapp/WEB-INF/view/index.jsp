@@ -33,7 +33,8 @@
 						recycleName ="<a href='<%=request.getContextPath()%>/recycleDetail?recycleCode="+recycleList.recycle_code+"'class='list-group-item list-group-item-action' class='1'>"+recycleList.recycle_name+"</a>";
 						
 					})
-					$("#recycleDetail").append(recycleName);
+					$("#reclcye_List").append(recycleName);
+					//$("#recycleDetail").append(recycleName);
 					//$("#recycleDetail").append(recycleCode);
 				}
 				,   error: function(data) {
