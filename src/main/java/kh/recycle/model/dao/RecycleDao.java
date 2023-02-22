@@ -51,7 +51,7 @@ public class RecycleDao {
 	// 재활용 내용
 	public List<RecycleVo> recycleDetail(Connection conn, int recycle_code) {
 		List<RecycleVo> result = null;
-		String sql = "select cf_code, recycle_code, recycle_name, recycle_tag, recycle_check, content, title, cf_name from recycle join cf_code using (recycle_code) join cf using (cf_code) where recycle_code = ?";
+		String sql = "select cf_code, recycle_code, recycle_name, recycle_tag, recycle_check, content, title, cf_name, image from recycle join cf_code using (recycle_code) join cf using (cf_code) where recycle_code = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -68,8 +68,9 @@ public class RecycleDao {
 				vo.setRecycle_tag(rs.getString(4));
 				vo.setRecycle_check(rs.getString(5));
 				vo.setContent(rs.getString(6));
-				vo.setCf_name(rs.getString(7));	
-				vo.setTitle(rs.getString(8));
+				vo.setTitle(rs.getString(7));
+				vo.setCf_name(rs.getString(8));	
+				vo.setImg(rs.getString(9));
 				result.add(vo); // vo에 저장한 값들을 ArrayList에 추가
 
 			}

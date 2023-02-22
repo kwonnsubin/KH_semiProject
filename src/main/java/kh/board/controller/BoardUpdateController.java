@@ -62,6 +62,12 @@ public class BoardUpdateController extends HttpServlet {
 			vo.setCategory(Integer.parseInt(request.getParameter("category")));
 			vo.setPwd(request.getParameter("pwd"));
 			vo.setContent(request.getParameter("content"));
+			System.out.println("controller: "+vo.getBoard_no());
+			System.out.println("controller: "+vo.getTitle());
+			System.out.println("controller: "+vo.getCategory());
+			System.out.println("controller: "+vo.getPwd());
+			System.out.println("controller: "+vo.getContent());
+			
 			//2. DB다녀오기
 			int result = new BoardService().update(vo);
 			if(result < 1) {

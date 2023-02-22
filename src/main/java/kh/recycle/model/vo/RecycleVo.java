@@ -30,12 +30,13 @@ public class RecycleVo {
 	int cf_code;
 	String cf_name;
 	String title;
+	String img;
 	
 	@Override
 	public String toString() {
 		return "RecycleVo [recycle_code=" + recycle_code + ", recycle_name=" + recycle_name + ", recycle_tag="
 				+ recycle_tag + ", recycle_check=" + recycle_check + ", content=" + content + ", cf_code=" + cf_code
-				+ ", cf_name=" + cf_name + ", title=" + title + "]";
+				+ ", cf_name=" + cf_name + ", title=" + title + ", img=" + img + "]";
 	}
 
 	public int getRecycle_code() {
@@ -101,6 +102,16 @@ public class RecycleVo {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
+	
 	
 	
 	

@@ -114,9 +114,9 @@
 
 	<!-- 게시글 하단-->
 	<div class="mb-3 mt-4">
-		<button class="btn btn-outline-primary me-2">목록보기</button>
+		<button class="btn btn-outline-primary me-2" onclick="location.href='<%=request.getContextPath()%>/board'">목록보기</button>
 		<button class="btn btn-outline-primary update me-2">수정</button>
-		<button class="btn delete btn-outline-primary  me-2">삭제</button>
+		<button class="btn delete btn-outline-primary  me-2" onclick="location.href='<%=request.getContextPath()%>/boardDelete?board_no=${boardList.board_no }'">삭제</button>
 	</div>
 	
 	
