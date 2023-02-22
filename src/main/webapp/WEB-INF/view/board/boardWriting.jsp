@@ -26,7 +26,7 @@
 	
 		<div class="row">
 			<div class="col">
-				<label>분류</label>			
+				<label class="align-middle">분류</label>			
 			</div>
 			<div class="col-10 mb-3">
 				<select name="category" class="form-select">
@@ -43,13 +43,13 @@
 		<c:if test="${empty lgnss}">
 			 <div class="mb-3 row">
 				 <div class="col-2">
-			   		<label for="inputPassword">작성자</label>		 
+			   		<label for="inputPassword" class="align-middle">작성자</label>		 
 				 </div>
 		    	<div class="col-4">
 		      		<input type="text"id="inputPassword" name="writer" class="form-control">
 		      	</div>
-		      	<div class="col-2">
-		      		<label for="inputPassword">비밀번호</label>	      	
+		      	<div class="col-2 text-center">
+		      		<label for="inputPassword" class="align-middle ">비밀번호</label>	      	
 		      	</div>
 		    	<div class="col-4">
 		      		<input type="text"id="inputPassword" name="pwd" class="form-control">
@@ -59,16 +59,16 @@
 		
 		
 		<div class="mb-3">
-  			<label for="exampleFormControlTextarea1" class="form-label"></label>
-  			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content" style="height: 100px;"></textarea>
+  			<label for="exampleFormControlTextarea1" class="form-label "></label>
+  			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content" style="height: 500px;"></textarea>
 		</div>
 		
 		<div class="row">
 			<div class="col">
-				<button type="button" class="btn">돌아가기</button>		
+				<button type="button" class="btn btn-outline-dark">돌아가기</button>		
 			</div>
 			<div class="col d-grid gap-2 d-md-flex justify-content-md-end">
-				<button type="submit" class="btn">완료</button>		
+				<button type="submit" class="btn btn-outline-dark">완료</button>		
 			</div>		
 		</div>
 	</form>
