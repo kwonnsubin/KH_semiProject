@@ -14,52 +14,52 @@
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 <jsp:include page="/WEB-INF/view/board/boardHeader.jsp"/>
-<div class="container-lg mb-5 mt-6 w-75">
+<div class="container mb-5 mt-6 w-75">
 	<!-- 게시판 상세글 -->
-	<div>
 		<c:forEach var="boardList" items="${boardList }">
 			<div>
 				<h3>${boardList.title }</h3>
 			</div>
-			<div class="row border">
-				<div class="d-inline col border">
+	<div class="mb-44">
+			<div class="row  bg-light  " style="height:50px;">
+				<div class="d-inline col-3  ">
 					<div class="d-inline">분류</div>
 					<div class="d-inline">${boardList.category }</div>
 				</div>
-				<div class="d-inline col border">
+				<div class="d-inline col-3  ">
 					<div class="d-inline">작성자</div>
 					<div class="d-inline">${boardList.writer }</div>
 				</div>
-				<div class="d-inline col border">
+				<div class="d-inline col ">
 					<div class="d-inline">작성일</div>
 					<div class="d-inline">${boardList.regdate }</div>
 				</div>
 			</div>
-			<div class="row border w-auto" style="width:1000px; height:500px;">
+			<div class="row  w-auto " style="width:1000px; height:300px;">
 				<p class="col">${boardList.content }</p>
 			</div>
 	</div>
 	<!-- 댓글 리스트 시작 -->
-	<div>
+	<div class="bg-light pe-3 ps-3 ">
 		<c:forEach var="replyList" items="${replyList }">
-			<div class="border" >
-				<div class="d-inline border row" style="padding: 0;">
-					<div class="d-inline col" style="padding: 0;">
-						${replyList.reply_writer }
+				<div class="row mb-2 pt-4" >
+					<div class="col-2">
+						<div class="">${replyList.reply_writer }</div>
 					</div>
-					<div class="d-inline col" style="padding: 0;">
-						${replyList.reply_regdate }					
+					<div class=" col">
+						<div class="">${replyList.reply_regdate }</div>				
 					</div>
 				</div>
-				<div class="row">
-					<p style="padding: 0;">${replyList.reply_content }<span>
+				<div class="row ">
+					<div class="col">
+						<p>${replyList.reply_content }<p>
+					</div>
 				</div>
-			</div>
 		<!-- 댓글 수정 삭제 -->
-				<div class="h-stack gap-3 ">
-					<button class=" d-inline btn btn-outline-primary " onclick="location.href='<%=request.getContextPath()%>/replyUpdate?reply_no=${replyList.reply_no }'">수정</button>			
-					<form action="<%=request.getContextPath()%>/replyDelete" method="post " class="d-inline">
-						<button class="d-inline btn btn-outline-primary delete " type="submit">삭제</button>
+				<div class="mb-4 ">
+					<button class=" d-inline btn btn-outline-primary me-2" onclick="location.href='<%=request.getContextPath()%>/replyUpdate?reply_no=${replyList.reply_no }'">수정</button>			
+					<form action="<%=request.getContextPath()%>/replyDelete" method="post" class="d-inline">
+						<button class="d-inline btn btn-outline-primary delete me-2 " type="submit">삭제</button>
 							<div class="d-inline">
 							<c:if test="${empty lgnss}">
 								<label class="d-inline" for="boardPw">비밀번호</label>
@@ -71,41 +71,52 @@
 				</div>
 		</c:forEach>
 		<!-- 댓글 작성 -->
+		<div class="">
 		<form action="<%=request.getContextPath()%>/boardDetail" method="post">
 			<input type="hidden" name="board_no" value="<%=request.getParameter("board_no")%>">
-			<div class="row">
-				<div class="col">
-					<textarea class="form-control w-auto" name="reply_content" placeholder="댓글달기..."></textarea>			
+			<div class="row ">
+				<div class="col mb-4">
+					<textarea class="form-control form-floating mw-100"  name="reply_content" placeholder="댓글달기..." style="width:100%;"></textarea>			
 				</div>
 			</div>
 			<c:if test="${empty lgnss}">
-			<div class="row">
-					<div class="col-2">
-						<label for="comment_writer">작성자</label>
-					</div>
-					<div class="col-8">
-						<input type="text" name="writer" placeholder="작성자" id="comment_writer">				
-					</div>
-					<div class="col d-md-flex justify-content-md-end">
-						<button class="d-inline btn btn-outline-primary " type="submit">입력</button>			
-					</div>
-			</div>
-			<div class="row">
-					<div class="col-2">	
-						<label for="comment_pw">비밀번호</label>
-					</div>	
-					<div class="col-6">
-						<input type="password" name="pwd" placeholder="비밀번호" id="comment_pw">					
-					</div>			
-			</div>
+				<div class="row  ">
+						<div class="col-2">
+							<label for="comment_writer">작성자</label>
+						</div>
+						<div class="col-8">
+							<input type="text" name="writer" placeholder="작성자" id="comment_writer">				
+						</div>
+						<div class="col d-md-flex justify-content-md-end">
+							<button class="d-inline btn btn-outline-primary " type="submit">입력</button>			
+						</div>
+				</div>
+				<div class="row ">
+						<div class="col-2">	
+							<label for="comment_pw">비밀번호</label>
+						</div>	
+						<div class="col-6 mb-4">
+							<input type="password" name="pwd" placeholder="비밀번호" id="comment_pw">					
+						</div>			
+				</div>
+			</c:if>
+			<c:if test="${ !empty lgnss}">
+				<div class="row  ">
+						<div class="col d-md-flex justify-content-md-end">
+							<button class="d-inline btn btn-outline-primary mb-4" type="submit">입력</button>			
+						</div>
+				</div>
 			</c:if>
 		</form>
+		</div>
 	</div>
 
 	<!-- 게시글 하단-->
-	<button class="btn btn-outline-primary">목록보기</button>
-	<button class="btn btn-outline-primary update">수정</button>
-	<button class="btn btn-outline-primary delete">삭제</button>
+	<div class="mb-3 mt-4">
+		<button class="btn btn-outline-primary me-2">목록보기</button>
+		<button class="btn btn-outline-primary update me-2">수정</button>
+		<button class="btn delete btn-outline-primary  me-2">삭제</button>
+	</div>
 	
 	
 		<script>
@@ -113,12 +124,6 @@
 			function handlerClickBtnUpdate() {
 				console.log("btnUpdate 눌림");
 				location.href="<%=request.getContextPath()%>/boardUpdate?board_no=${boardList.board_no }";
-			}
-			
-			$(".btn.delete").on("click", handlerClickBtnDelete);
-			function handlerClickBtnDelete() {
-				console.log("btnDelete 눌림");
-				location.href="<%=request.getContextPath()%>/boardDelete?board_no=${boardList.board_no }";
 			}
 		</script>
 	</c:forEach>
