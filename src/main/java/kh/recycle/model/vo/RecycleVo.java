@@ -1,4 +1,4 @@
-package kh.home.model.vo;
+package kh.recycle.model.vo;
 
 public class RecycleVo {
 	
@@ -29,12 +29,13 @@ public class RecycleVo {
 	
 	int cf_code;
 	String cf_name;
+	String title;
 	
 	@Override
 	public String toString() {
 		return "RecycleVo [recycle_code=" + recycle_code + ", recycle_name=" + recycle_name + ", recycle_tag="
 				+ recycle_tag + ", recycle_check=" + recycle_check + ", content=" + content + ", cf_code=" + cf_code
-				+ ", cf_name=" + cf_name + "]";
+				+ ", cf_name=" + cf_name + ", title=" + title + "]";
 	}
 
 	public int getRecycle_code() {
@@ -91,6 +92,14 @@ public class RecycleVo {
 
 	public void setCf_name(String cf_name) {
 		this.cf_name = cf_name;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	

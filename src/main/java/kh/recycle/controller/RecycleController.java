@@ -5,8 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import kh.home.model.dao.RecycleDao;
-import kh.home.model.vo.RecycleVo;
+import kh.recycle.model.dao.RecycleDao;
+import kh.recycle.model.vo.RecycleVo;
 import kh.recycle.model.service.RecycleService;
 
 import java.io.IOException;

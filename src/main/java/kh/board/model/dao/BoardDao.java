@@ -21,7 +21,7 @@ public class BoardDao {
 //	REGDATE           TIMESTAMP(6)   
 //	CATEGORY          NUMBER 
 	
-	// 게시판 목록
+	// 게시판 목록()
 	public List<BoardVo> boardList(Connection conn) {
 		BoardVo result = null; // 결과값을 저장하기 위한 result
 		String sql = "select BOARD_NO, WRITER, PWD, TITLE, CONTENT, REGDATE, CATEGORY from BOARD_T ORDER BY BOARD_NO DESC";
@@ -107,7 +107,7 @@ public class BoardDao {
 	
 	
 	
-	// 게시판 작성
+	// 게시판 작성()
 	public int Writing(Connection conn, BoardVo vo) {
 		int result = -1;
 		String sql = "INSERT INTO BOARD_T VALUES(?,?,?,?,?,CURRENT_TIMESTAMP,?)";

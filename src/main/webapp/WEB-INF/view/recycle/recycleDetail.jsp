@@ -16,10 +16,8 @@
 		<div>${recycleList.recycle_tag}</div>
 		<div>재활용:${recycleList.recycle_check}</div>
 		<div>분류:${recycleList.cf_name}</div>
-		<div>버리는방법</div>
-		<div>${recycleList.title}</div>
-		<div>알아두면 좋은 점</div>
-		<div>${recycleList.content}</div>
+		<div>버리는방법${recycleList.title}</div>
+		<div>알아두면 좋은 점${recycleList.content}</div>
 	</c:forEach>
 </body>
 </html>

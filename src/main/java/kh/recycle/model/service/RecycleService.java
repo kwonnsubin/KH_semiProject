@@ -7,8 +7,8 @@ import java.sql.Connection;
 import java.util.List;
 
 import kh.board.model.dao.BoardDao;
-import kh.home.model.dao.RecycleDao;
-import kh.home.model.vo.RecycleVo;
+import kh.recycle.model.dao.RecycleDao;
+import kh.recycle.model.vo.RecycleVo;
 
 public class RecycleService {
 

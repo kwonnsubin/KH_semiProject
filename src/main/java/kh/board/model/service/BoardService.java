@@ -8,12 +8,13 @@ import java.util.List;
 
 import kh.board.model.dao.BoardDao;
 import kh.board.model.vo.BoardVo;
+import kh.common.jdbc.JDBCTemplate;
 import kh.member.model.dao.MemberDao;
 import kh.member.model.vo.MemberVo;
 
 public class BoardService {
 	
-	// 게시판 목록
+	// 게시판 목록()
 	public List<BoardVo> boardList() {
 		List<BoardVo> result = null;
 		Connection conn = getConnection();
@@ -31,12 +32,18 @@ public class BoardService {
 		return result;
 	}
 	
-	// 게시판 작성
+	// 게시판 작성()
 	public int Writing(BoardVo vo) {
 		int result = -1;
 		Connection conn = getConnection();
 		result = new BoardDao().Writing(conn, vo);
-		close(conn);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+			
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
 		return result;
 	}
 	

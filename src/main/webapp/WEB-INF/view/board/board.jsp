@@ -13,31 +13,32 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
 <body>
-<h1>커뮤니티</h1>
-<i class="fas fa-thumbs-up fa-5x"></i>
-<i class="fa-solid fa-magnifying-glass"></i>
+<jsp:include page="/WEB-INF/view/header.jsp"/>
+<jsp:include page="/WEB-INF/view/board/boardHeader.jsp"/>
 <div class="container-sm">
 	<button type="button" class="btn writing btn-outline-secondary btn-sm">글쓰기</button>
-	<table class="table table-hover">
-		<thead>
+	<table class="table table-hover table-group-divider mt-3 mb-3">
+		<thead class="table-light text-center">
 		<tr>
-			<th>분류</th>
+			<th class="text-center">분류</th>
 			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
+			<th class="text-center">작성자</th>
+			<th class="text-center">작성일</th>
 		</tr>
 		</thead>
 		<c:forEach var="boardList" items="${boardList }">
+		<tbody>
 			<tr>
-				<td>${boardList.category }</td>
+				<td class="text-center">${boardList.category }</td>
 				<td><a href="<%=request.getContextPath()%>/boardDetail?board_no=${boardList.board_no}">${boardList.title }</a></td>
-				<td>${boardList.writer }</td>
-				<td>${boardList.regdate }</td>
+				<td class="text-center">${boardList.writer }</td>
+				<td class="text-center">${boardList.regdate }</td>
 			</tr>
+		</tbody>
 		</c:forEach>
 	</table>
 	<nav class="text-center">
-		<ul class="pagination justify-content-center">
+		<ul class="pagination justify-content-center mt-5">
 			<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
 			<li class="page-item"><a class="page-link" href="#">2</a></li>
 			<li class="page-item"><a class="page-link" class="page-link" href="#">3</a></li>

@@ -26,10 +26,7 @@ public class BoardWritingController extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/view/board/boardWriting.jsp").forward(request, response);
 	}
@@ -39,11 +36,11 @@ public class BoardWritingController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardVo vo = new BoardVo();
-		//1
+		
 		if(request.getSession().getAttribute("lgnss") != null) { // 로그인이 되어있으면
 
 			vo.setTitle(request.getParameter("title"));
-			vo.setCategory(Integer.parseInt(request.getParameter("category")));			
+			//vo.setCategory(Integer.parseInt(request.getParameter("category")));			
 			vo.setWriter(((MemberVo)(request.getSession().getAttribute("lgnss"))).getNickname());
 			vo.setPwd(((MemberVo)(request.getSession().getAttribute("lgnss"))).getPwd());
 			vo.setContent(request.getParameter("content"));
@@ -59,7 +56,7 @@ public class BoardWritingController extends HttpServlet {
 
 		} else { // 로그인이 안되어있으면
 			vo.setTitle(request.getParameter("title"));
-			vo.setCategory(Integer.parseInt(request.getParameter("category")));
+			//vo.setCategory(Integer.parseInt(request.getParameter("category")));
 			vo.setWriter(request.getParameter("writer"));
 			vo.setContent(request.getParameter("content"));
 			vo.setPwd(request.getParameter("pwd"));

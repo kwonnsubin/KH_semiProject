@@ -1,4 +1,4 @@
-package kh.home.model.dao;
+package kh.recycle.model.dao;
 
 import static kh.common.jdbc.JDBCTemplate.close;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kh.board.model.vo.BoardVo;
-import kh.home.model.vo.RecycleVo;
+import kh.recycle.model.vo.RecycleVo;
 
 public class RecycleDao {
 	
@@ -51,7 +51,7 @@ public class RecycleDao {
 	// 재활용 내용
 	public List<RecycleVo> recycleDetail(Connection conn, int recycle_code) {
 		List<RecycleVo> result = null;
-		String sql = "select cf_code, recycle_code, recycle_name, recycle_tag, recycle_check, content, cf_name from recycle join cf_code using (recycle_code) join cf using (cf_code) where recycle_code = ?";
+		String sql = "select cf_code, recycle_code, recycle_name, recycle_tag, recycle_check, content, title, cf_name from recycle join cf_code using (recycle_code) join cf using (cf_code) where recycle_code = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -68,7 +68,8 @@ public class RecycleDao {
 				vo.setRecycle_tag(rs.getString(4));
 				vo.setRecycle_check(rs.getString(5));
 				vo.setContent(rs.getString(6));
-				vo.setCf_name(rs.getString(7));					
+				vo.setCf_name(rs.getString(7));	
+				vo.setTitle(rs.getString(8));
 				result.add(vo); // vo에 저장한 값들을 ArrayList에 추가
 
 			}
