@@ -72,7 +72,7 @@ public class BoardDetailController extends HttpServlet {
 				System.out.println("댓글쓰기 실패");
 			} else {
 				System.out.println("댓글쓰기 성공");
-				response.sendRedirect(request.getContextPath()+"/board");
+				response.sendRedirect(request.getContextPath()+"/boardDetail?board_no="+vo.getBoard_no());
 			}
 			
 
@@ -92,7 +92,7 @@ public class BoardDetailController extends HttpServlet {
 				System.out.println("댓글쓰기 실패");
 			} else {
 				System.out.println("댓글쓰기 성공");
-				response.sendRedirect(request.getContextPath()+"/board");
+				response.sendRedirect(request.getContextPath()+"/boardDetail?board_no="+vo.getBoard_no());
 			}
 		}
 	}

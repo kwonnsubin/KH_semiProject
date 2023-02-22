@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,11 +59,12 @@
 				<div class="mb-4 ">
 					<button class=" d-inline btn btn-outline-primary me-2" onclick="location.href='<%=request.getContextPath()%>/replyUpdate?reply_no=${replyList.reply_no }'">수정</button>			
 					<form action="<%=request.getContextPath()%>/replyDelete" method="post" class="d-inline">
-						<button class="d-inline btn btn-outline-primary delete me-2 " type="submit">삭제</button>
+						<input type="hidden" name="board_no" value="<%=request.getParameter("board_no")%>">
+						<button class="d-inline btn btn-outline-primary delete me-2" type="submit">삭제</button>
 							<div class="d-inline">
 							<c:if test="${empty lgnss}">
 								<label class="d-inline" for="boardPw">비밀번호</label>
-								<input class="d-inline form-control w-25"  type="password" name="reply_pwd" id=boardPw" >
+								<input class="d-inline form-control w-25"  type="password" name="reply_pwd" id="boardPw" >
 							</c:if>
 								<input class="d-inline" type="hidden" name="reply_no" value="${replyList.reply_no }">						
 							</div>

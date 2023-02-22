@@ -33,30 +33,33 @@ public class ReplyDeleteController extends HttpServlet {
 		BoardVo vo = new BoardVo();
 		int reply_no =0;
 		String reply_pwd = null;
+		int board_no = 0;
+		
 		if(request.getSession().getAttribute("lgnss") != null) { // 로그인이 되어있으면
-			
 			reply_no = Integer.parseInt(request.getParameter("reply_no"));	
 			reply_pwd = ((MemberVo)(request.getSession().getAttribute("lgnss"))).getPwd();
+			board_no = Integer.parseInt(request.getParameter("board_no"));
 			//2. DB다녀오기
 			int result = new BoardService().replyDelete(reply_no, reply_pwd);
 			if(result < 1) {
 				System.out.println("삭제 성공");
 			} else {
 				System.out.println("삭제 실패");
-				response.sendRedirect(request.getContextPath()+"/board");
+				response.sendRedirect(request.getContextPath()+"/board?board_no="+board_no);
 			}
 			
 		} else { // 로그인이 안되어있으면
 			reply_no= Integer.parseInt(request.getParameter("reply_no"));
 			reply_pwd = request.getParameter("reply_pwd");
-			System.out.println("");
+			board_no = Integer.parseInt(request.getParameter("board_no"));
+			System.out.println("contoller"+board_no);
 			//2. DB다녀오기
 			int result = new BoardService().replyDelete(reply_no, reply_pwd);
 			if(result < 1) {
 				System.out.println("삭제 실패");
 			} else {
 				System.out.println("삭제 성공");
-				response.sendRedirect(request.getContextPath()+"/board");
+				response.sendRedirect(request.getContextPath()+"/boardDetail?board_no="+board_no);
 			}
 		
 		}

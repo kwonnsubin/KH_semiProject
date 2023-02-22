@@ -134,7 +134,7 @@ public class BoardDao {
 	// 댓글 목록
 	public List<BoardVo> replyList(Connection conn, int bno) {
 		List<BoardVo> result = null;
-		String sql = "select BOARD_NO, REPLY_NO, REPLY_WRITER, REPLY_REGDATE, REPLY_CONTENT, REPLY_PWD from reply where BOARD_NO=?";
+		String sql = "select BOARD_NO, REPLY_NO, REPLY_WRITER, REPLY_REGDATE, REPLY_CONTENT, REPLY_PWD from reply where BOARD_NO=? ORDER BY REPLY_NO ASC";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
