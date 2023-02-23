@@ -31,9 +31,11 @@
 						//recycleName = "<button type='submit' class='list-group-item list-group-item-action' class='1'>"+recycleList.recycle_name+"</button>";
 						//recycleCode ="<input type='hidden' name='recycleCode' value="+recycleList.recycle_code+">"
 						recycleName ="<a href='<%=request.getContextPath()%>/recycleDetail?recycleCode="+recycleList.recycle_code+"'class='list-group-item list-group-item-action' class='1'>"+recycleList.recycle_name+"</a>";
-						
+						img ="<img src="+recycleList.img+" style='width:100px; heigth:100px;'>";
 					})
+					console.log(recycleList.img);
 					$("#reclcye_List").html(recycleName);
+					$("#img").html(img);
 					//$("#recycleDetail").append(recycleName);
 					//$("#recycleDetail").append(recycleCode);
 				}

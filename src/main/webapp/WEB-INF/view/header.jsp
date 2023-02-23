@@ -36,6 +36,10 @@
 						</form>
 					-->	
 				</div>
+				<div id="img">
+				
+				
+				</div>
 			</div>
 		</div>
 </div>

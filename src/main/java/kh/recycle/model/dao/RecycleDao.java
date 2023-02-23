@@ -17,7 +17,7 @@ public class RecycleDao {
 	// 검색
 	public List<RecycleVo> search(Connection conn, String recycle_name) {
 		List<RecycleVo> result = null;
-		String sql = "select Cf_code, Recycle_code, recycle_name from recycle join cf_code using (recycle_code) join cf using (cf_code) where recycle_name LIKE ?";
+		String sql = "select Cf_code, Recycle_code, recycle_name, image from recycle join cf_code using (recycle_code) join cf using (cf_code) where recycle_name LIKE ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -31,6 +31,7 @@ public class RecycleDao {
 				vo.setCf_code(rs.getInt(1));
 				vo.setRecycle_code(rs.getInt(2));
 				vo.setRecycle_name(rs.getString(3));
+				vo.setImg(rs.getString(4));
 //				vo.setRecycle_tag(rs.getString(4));
 //				vo.setRecycle_check(rs.getString(5));
 //				vo.setContent(rs.getString(6));
