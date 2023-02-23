@@ -5,7 +5,7 @@
 	<div class="container-lg mb-5 mt-6">
 		<nav class="navbar">
     		<a class="navbar-brand me-auto p-2" href="#">
-     			 <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="5" height="10">
+     			 <img src="https://image.jtbcplus.kr/data/contents/jam_photo/202003/16/77520654-2478-4712-ab4b-69e00d187dbb.jpg" alt="Bootstrap" width="300" height="50" onclick="location.href='<%=request.getContextPath()%>/recycle'">
     		</a>
 			<div class="d-flex justify-content-end">
 				<c:choose>
