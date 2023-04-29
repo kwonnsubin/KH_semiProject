@@ -33,9 +33,6 @@ public class BoardController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		List<BoardVo> result = null;
-		result = new BoardService().boardList(); // 리스트		
 		
 		// 페이징
 		String pageNumber = request.getParameter("p");
@@ -80,7 +77,6 @@ public class BoardController extends HttpServlet {
 		Paging paging = service.getPage(pNum, Integer.parseInt(cnt));
 		
 		/* jsp에게 전달 */
-//		request.setAttribute("boardList", result);
 		request.setAttribute("paging", paging);
 		request.getRequestDispatcher("/WEB-INF/view/board/board.jsp").forward(request, response);
 	}

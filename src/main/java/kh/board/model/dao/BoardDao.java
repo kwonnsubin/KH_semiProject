@@ -14,44 +14,37 @@ import kh.board.model.vo.BoardVo;
 import kh.member.model.vo.MemberVo;
 
 public class BoardDao {
-//	BOARD_NO NOT NULL NUMBER         
-//	WRITER            VARCHAR2(20)   
-//	PWD               VARCHAR2(20)   
-//	TITLE    NOT NULL VARCHAR2(200)  
-//	CONTENT  NOT NULL VARCHAR2(4000) 
-//	REGDATE           TIMESTAMP(6)   
-//	CATEGORY          NUMBER 
 	
-	// 게시판 목록(selectPage으로 대체)
-	public List<BoardVo> boardList(Connection conn) {
-		BoardVo result = null; // 결과값을 저장하기 위한 result
-		String sql = "select BOARD_NO, WRITER, PWD, TITLE, CONTENT, REGDATE, CATEGORY from BOARD_T ORDER BY BOARD_NO DESC";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<BoardVo> list = new ArrayList<BoardVo>(); // 게시판 목록 담을 list
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				result = new BoardVo();
-				result.setBoard_no(rs.getInt(1));
-				result.setWriter(rs.getString(2));
-				result.setPwd(rs.getString(3));
-				result.setTitle(rs.getString(4));
-				result.setContent(rs.getString(5));
-				result.setRegdate(rs.getTimestamp(6));
-				result.setCategory(rs.getInt(7));
-				list.add(result);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		
-		return list;
-	}
+//	// 게시판 목록(selectPage으로 대체)
+//	public List<BoardVo> boardList(Connection conn) {
+//		BoardVo result = null; // 결과값을 저장하기 위한 result
+//		String sql = "select BOARD_NO, WRITER, PWD, TITLE, CONTENT, REGDATE, CATEGORY from BOARD_T ORDER BY BOARD_NO DESC";
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		List<BoardVo> list = new ArrayList<BoardVo>(); // 게시판 목록 담을 list
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//			while(rs.next()) {
+//				result = new BoardVo();
+//				result.setBoard_no(rs.getInt(1));
+//				result.setWriter(rs.getString(2));
+//				result.setPwd(rs.getString(3));
+//				result.setTitle(rs.getString(4));
+//				result.setContent(rs.getString(5));
+//				result.setRegdate(rs.getTimestamp(6));
+//				result.setCategory(rs.getInt(7));
+//				list.add(result);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(rs);
+//			close(pstmt);
+//		}
+//		
+//		return list;
+//	}
 	
 	// 게시판 목록(페이징)
 	public List<BoardVo> selectPage(Map<String, Object> map, Connection conn) {

@@ -17,14 +17,14 @@ import page.Paging;
 
 public class BoardService {
 	
-	// 게시판 목록()
-	public List<BoardVo> boardList() {
-		List<BoardVo> result = null;
-		Connection conn = getConnection();
-		result = new BoardDao().boardList(conn);
-		close(conn);
-		return result;
-	}
+//	// 게시판 목록()
+//	public List<BoardVo> boardList() {
+//		List<BoardVo> result = null;
+//		Connection conn = getConnection();
+//		result = new BoardDao().boardList(conn);
+//		close(conn);
+//		return result;
+//	}
 	
 	// 게시판 상세글
 	public List<BoardVo> boardDetail(int bno) {
@@ -35,7 +35,7 @@ public class BoardService {
 		return result;
 	}
 	
-	// 게시판 작성()
+	// 게시판 작성
 	public int Writing(BoardVo vo) {
 		int result = -1;
 		Connection conn = getConnection();

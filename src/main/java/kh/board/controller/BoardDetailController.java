@@ -28,24 +28,29 @@ public class BoardDetailController extends HttpServlet {
     }
     
 
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1
 		String board_no = request.getParameter("board_no");
+		System.out.println("board_no: " + board_no);
 		int bno = Integer.parseInt(board_no);
-		System.out.println(bno);
+		System.out.println("bno:" + bno);
 		
 		// 게시판 목록
 		List<BoardVo> result1 = null;
 		List<BoardVo> result2 = null;
+		
 		result1 = new BoardService().boardDetail(bno); // 게시판 상세내용
 		result2 = new BoardService().replyList(bno); // 댓글 리스트
-		System.out.println(result2);
+		
 		request.setAttribute("boardList", result1);
+		System.out.println(result1);
+		
 		request.setAttribute("replyList", result2);
+		System.out.println(result2);
+		
 		request.getRequestDispatcher("/WEB-INF/view/board/boardDetail.jsp").forward(request, response);
 	}
 	
@@ -61,11 +66,6 @@ public class BoardDetailController extends HttpServlet {
 			vo.setReply_writer(((MemberVo)(request.getSession().getAttribute("lgnss"))).getNickname());
 			vo.setReply_pwd(((MemberVo)(request.getSession().getAttribute("lgnss"))).getPwd());
 
-//			vo.setTitle(request.getParameter("title"));
-//			vo.setCategory(Integer.parseInt(request.getParameter("category")));			
-//			vo.setWriter(((MemberVo)(request.getSession().getAttribute("lgnss"))).getNickname());
-//			vo.setPwd(((MemberVo)(request.getSession().getAttribute("lgnss"))).getPwd());
-//			vo.setContent(request.getParameter("content"));
 			//2. DB다녀오기
 			int result = new BoardService().replyAdd(vo);
 			if(result < 1) {
@@ -81,11 +81,7 @@ public class BoardDetailController extends HttpServlet {
 			vo.setReply_content(request.getParameter("reply_content"));
 			vo.setReply_writer(request.getParameter("writer"));
 			vo.setReply_pwd(request.getParameter("pwd"));
-//			vo.setTitle(request.getParameter("title"));
-//			vo.setCategory(Integer.parseInt(request.getParameter("category")));
-//			vo.setWriter(request.getParameter("writer"));
-//			vo.setContent(request.getParameter("content"));
-//			vo.setPwd(request.getParameter("pwd"));
+
 			//2. DB다녀오기
 			int result = new BoardService().replyAdd(vo);
 			if(result < 1) {
