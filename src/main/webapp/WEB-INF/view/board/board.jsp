@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="kh.board.model.vo.BoardVo"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,26 +27,43 @@
 			<th class="text-center">작성일</th>
 		</tr>
 		</thead>
-		<c:forEach var="boardList" items="${boardList }">
+		<c:forEach var="data" items="${requestScope.paging.page }">
 		<tbody>
 			<tr>
-				<td class="text-center">${boardList.category }</td>
-				<td><a href="<%=request.getContextPath()%>/boardDetail?board_no=${boardList.board_no}">${boardList.title }</a></td>
-				<td class="text-center">${boardList.writer }</td>
-				<td class="text-center">${boardList.regdate }</td>
+				<td class="text-center">${data.category }</td>
+				<td><a href="<%=request.getContextPath()%>/boardDetail?board_no=${data.board_no}">${data.title }</a></td>
+				<td class="text-center">${data.writer }</td>
+				<td class="text-center"><fmt:formatDate value="${data.regdate }" pattern="yyyy.MM.dd"/></td>
 			</tr>
 		</tbody>
 		</c:forEach>
 	</table>
-	<nav class="text-center">
-		<ul class="pagination justify-content-center mt-5">
-			<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#">4</a></li>
-			<li class="page-item"><a class="page-link" href="#">Next</a></li>
+	<!-- 페이지 번호 {s} -->
+	<nav aria-label="...">
+		<ul class="pagination justify-content-center">
+			<c:set var="pageNumber" value="${empty param.p ? 1 : param.p }" />
+			<c:choose>
+				<c:when test="${requestScope.paging.prevPage eq -1 }">
+					<li class="page-item disabled"><a class="page-link">prev</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item"><a class="page-link" href="${board }?p=${requestScope.paging.prevPage }">prev</a></li>
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="pNum" items="${requestScope.paging.pageList }">
+				<li class="page-item ${pNum eq pageNumber ? 'active' : '' }"><a class="page-link" href="${board }?p=${pNum }">${pNum }</a></li>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${requestScope.paging.nextPage eq -1 }">
+					<li class="page-item disabled"><a class="page-link">next</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item"><a class="page-link" href="${board }?p=${requestScope.paging.nextPage }">next</a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 	</nav>
+	<!-- 페이지 번호 {e} -->
 </div>
 	<script>
 		$(".btn.writing").on("click", handlerClickBtnWriting);

@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import kh.board.model.vo.BoardVo;
 import kh.member.model.vo.MemberVo;
@@ -21,7 +22,7 @@ public class BoardDao {
 //	REGDATE           TIMESTAMP(6)   
 //	CATEGORY          NUMBER 
 	
-	// 게시판 목록()
+	// 게시판 목록(selectPage으로 대체)
 	public List<BoardVo> boardList(Connection conn) {
 		BoardVo result = null; // 결과값을 저장하기 위한 result
 		String sql = "select BOARD_NO, WRITER, PWD, TITLE, CONTENT, REGDATE, CATEGORY from BOARD_T ORDER BY BOARD_NO DESC";
@@ -51,6 +52,74 @@ public class BoardDao {
 		
 		return list;
 	}
+	
+	// 게시판 목록(페이징)
+	public List<BoardVo> selectPage(Map<String, Object> map, Connection conn) {
+	    BoardVo result = null;
+	    String sql = "SELECT BOARD_NO, WRITER, PWD, TITLE, CONTENT, REGDATE, CATEGORY "
+	            + "FROM ( "
+	            + "SELECT ROWNUM AS N "
+	            + ", BOARD_NO "
+	            + ", WRITER "
+	            + ", PWD "
+	            + ", TITLE "
+	            + ", CONTENT "
+	            + ", REGDATE "
+	            + ", CATEGORY "
+	            + "FROM (SELECT * FROM BOARD_T ORDER BY REGDATE DESC) "
+	            + ") "
+	            + "WHERE N BETWEEN ? AND ?";
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    List<BoardVo> list = new ArrayList<BoardVo>();
+	    try {
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setInt(1, (int) map.get("start"));
+	        pstmt.setInt(2, (int) map.get("end"));
+	        rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            result = new BoardVo();
+	            result.setBoard_no(rs.getInt(1));
+	            result.setWriter(rs.getString(2));
+	            result.setPwd(rs.getString(3));
+	            result.setTitle(rs.getString(4));
+	            result.setContent(rs.getString(5));
+	            result.setRegdate(rs.getTimestamp(6));
+	            result.setCategory(rs.getInt(7));
+	            list.add(result);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        close(rs);
+	        close(pstmt);
+	    }
+	    return list;
+	}
+
+	
+	// 페이지수
+	public int selectTotalRowCount(Connection conn) {
+	    int count = 0;
+	    String sql = "SELECT COUNT(*) FROM BOARD_T";
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    try {
+	        pstmt = conn.prepareStatement(sql);
+	        rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            count = rs.getInt(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        close(rs);
+	        close(pstmt);
+	    }
+	    return count;
+	}
+
+	
 	
 	// 게시판 상세내용
 	public List<BoardVo> boardDetail(Connection conn, int bno) {

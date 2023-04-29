@@ -41,8 +41,8 @@ public class BoardDetailController extends HttpServlet {
 		// 게시판 목록
 		List<BoardVo> result1 = null;
 		List<BoardVo> result2 = null;
-		result1 = new BoardService().boardDetail(bno);
-		result2 = new BoardService().replyList(bno);
+		result1 = new BoardService().boardDetail(bno); // 게시판 상세내용
+		result2 = new BoardService().replyList(bno); // 댓글 리스트
 		System.out.println(result2);
 		request.setAttribute("boardList", result1);
 		request.setAttribute("replyList", result2);

@@ -23,7 +23,7 @@ public class BoardVo {
 //	REPLY_CONTENT NOT NULL VARCHAR2(4000) 
 //	REPLY_PWD     NOT NULL VARCHAR2(20)
 	
-	int board_no; // 꼭 소문자로써...
+	int board_no;
 	String writer;
 	String pwd;
 	String title;

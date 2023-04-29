@@ -39,7 +39,7 @@
 				<p class="col">${boardList.content }</p>
 			</div>
 	</div>
-	<!-- 댓글 리스트 시작 -->
+	<!-- 댓글 리스트 {s} -->
 	<div class="bg-light pe-3 ps-3 ">
 		<c:forEach var="replyList" items="${replyList }">
 				<div class="row mb-2 pt-4" >
@@ -55,12 +55,12 @@
 						<p>${replyList.reply_content }<p>
 					</div>
 				</div>
-		<!-- 댓글 수정 삭제 -->
-				<div class="mb-4 ">
+				<!-- 댓글 수정 삭제 {s} -->
+				<div class="mb-4">
 					<button class=" d-inline btn btn-outline-primary me-2" onclick="location.href='<%=request.getContextPath()%>/replyUpdate?reply_no=${replyList.reply_no }'">수정</button>			
 					<form action="<%=request.getContextPath()%>/replyDelete" method="post" class="d-inline">
 						<input type="hidden" name="board_no" value="<%=request.getParameter("board_no")%>">
-						<button class="d-inline btn btn-outline-primary delete me-2" type="submit">삭제</button>
+						<button class="d-inline btn btn-outline-primary delete me-2" type="submit" id="btn_delete_reply">삭제</button>
 							<div class="d-inline">
 							<c:if test="${empty lgnss}">
 								<label class="d-inline" for="boardPw">비밀번호</label>
@@ -70,6 +70,7 @@
 							</div>
 					</form>
 				</div>
+				<!-- 댓글 수정/삭제 {e} -->
 		</c:forEach>
 		<!-- 댓글 작성 -->
 		<div class="">
@@ -118,16 +119,37 @@
 		<button class="btn btn-outline-primary update me-2">수정</button>
 		<button class="btn delete btn-outline-primary  me-2" onclick="location.href='<%=request.getContextPath()%>/boardDelete?board_no=${boardList.board_no }'">삭제</button>
 	</div>
-	
-	
-		<script>
-			$(".btn.update").on("click", handlerClickBtnUpdate);
-			function handlerClickBtnUpdate() {
-				console.log("btnUpdate 눌림");
-				location.href="<%=request.getContextPath()%>/boardUpdate?board_no=${boardList.board_no }";
-			}
-		</script>
 	</c:forEach>
 </div>
 </body>
+<script>
+
+//
+$(".btn.update").on("click", handlerClickBtnUpdate);
+function handlerClickBtnUpdate() {
+	console.log("btnUpdate 눌림");
+	location.href="<%=request.getContextPath()%>/boardUpdate?board_no=${boardList.board_no }";
+}
+
+// 댓글 삭제 ajax
+$("#btn_delete_reply").on("click", handlerClickBtnDeleteReply);
+function handlerClickBtnDeleteReply() {
+var reply_no = $("input[name='reply_no']").val(); // $()안에는 따옴표로 감싸야한다.
+	
+    $.ajax({
+        url: '<%=request.getContextPath()%>/admin/qna/selectAnswerCount',
+        data: {reply_no: reply_no},
+        type: "POST",
+        success: function(result) {
+            html += result;
+            $('#answersCount').text(html);
+        },
+        error: function() {
+            alert("답변수 요청 실패!");
+        }
+    });	
+	
+}
+
+</script>
 </html>

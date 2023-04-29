@@ -4,13 +4,16 @@ import static kh.common.jdbc.JDBCTemplate.close;
 import static kh.common.jdbc.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import kh.board.model.dao.BoardDao;
 import kh.board.model.vo.BoardVo;
 import kh.common.jdbc.JDBCTemplate;
 import kh.member.model.dao.MemberDao;
 import kh.member.model.vo.MemberVo;
+import page.Paging;
 
 public class BoardService {
 	
@@ -102,6 +105,26 @@ public class BoardService {
 		result = new BoardDao().replyUpdate(conn, vo);
 		close(conn);
 		return result;
+	}
+	
+	// 페이징
+	public Paging getPage(int pNum, int cnt) {
+		Connection conn = getConnection();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", (pNum - 1) * cnt + 1);
+		map.put("end", pNum * cnt);
+		
+		BoardDao dao = new BoardDao();
+		List<BoardVo> dataList = dao.selectPage(map, conn); // 페이지의 즐겨찾기 목록
+		
+		int totalRowCount = dao.selectTotalRowCount(conn); // totalRowCount = 전체방명록 개수
+		int mod = totalRowCount % cnt == 0 ? 0 : 1; // 전체 개수 / 선택값 -> 11 / 5개 == 1 
+		int pageCount = (totalRowCount / cnt) + mod; // pageCount = 1 + 2 : 3page
+		
+		Paging paging = new Paging(dataList, pNum, pageCount, cnt, 5); // (전체 목록, 현재페이지, 구해서나온페이지수(3page), 옵션값) 그냥 모든 페이징 작업과 관련된 정보들을 다보내.
+		close(conn);
+		return paging;
 	}
 }
 
