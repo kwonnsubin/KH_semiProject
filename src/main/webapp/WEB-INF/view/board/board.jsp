@@ -31,7 +31,7 @@
 		<tbody>
 			<tr>
 				<td class="text-center">${data.category }</td>
-				<td><a href="<%=request.getContextPath()%>/boardDetail?board_no=${data.board_no}">${data.title }</a></td>
+				<td><a style="text-decoration: none;" href="<%=request.getContextPath()%>/boardDetail?board_no=${data.board_no}">${data.title }</a></td>
 				<td class="text-center">${data.writer }</td>
 				<td class="text-center"><fmt:formatDate value="${data.regdate }" pattern="yyyy.MM.dd"/></td>
 			</tr>
