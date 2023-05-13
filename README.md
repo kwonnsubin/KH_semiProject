@@ -1,7 +1,8 @@
 # KH_semiProject 개인 프로젝트
 
 ## 구현 목표
-- 사용자가 자신이 버릴 쓰레기가 어떤 분리수거함에 들어가는지, 어떻게 처리해야 하는지 쉽게 알 수 있도록 안내하고, 쓰레기의 종류와 분리방법을 포함한 정보를 사용자가 쉽게 찾을 수 있도록 제공하는 것 
+- 사용자가 자신이 버릴 쓰레기가 어떤 분리수거함에 들어가는지, 어떻게 처리해야 하는지 쉽게 알 수 있도록 안내하고, <br>
+쓰레기의 종류와 분리방법을 포함한 정보를 사용자가 쉽게 찾을 수 있도록 제공하는 것 
 - 쓰레기 분리와 관련된 활동에 대한 참여도를 높이기 위해 쓰레기 처리에 대한 정보를 제공하는 게시판 형태의 커뮤니티 추가
 
 ## 구현 기간
@@ -9,11 +10,17 @@
 
 ## 개발 환경
 OS : Microsoft Window 10, MacOS Ventura
+<br>
 Language : Java11, Servlet/JSP, HTML5, JavaScript, CSS, JSP/Servlet
+<br>
 Web Application Server : Apache Tomcat 9.0
+<br>
 DataBase : Oracle 21c Express Edition
+<br>
 Framework : Bootstrap5, jQuery, Ajax
+<br>
 Developer Tool : Eclipse, SQL Developer, Dbeaver
+<br>
 Version Management System : Git (Github Desktop)
 
 ## 구현 기능
@@ -62,3 +69,11 @@ Version Management System : Git (Github Desktop)
 
 - 로그인한 아이디와 댓글 작성자의 아이디가 같을 시 수정, 삭제 버튼이 활성화
   - 댓글 수정 시 해당 댓글이 수정할 수 있는 수정폼으로 변경
+
+## Document
+### 화면설계서
+https://docs.google.com/presentation/d/1p4_CDNj-eKKnKpVJDsKBclZQUTaxA8bs/edit?usp=sharing&ouid=112907135514416036558&rtpof=true&sd=true
+
+## 테이블명세서
+<img width="965" alt="image" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/3b740a85-4afa-4d61-8cfc-88483f9524db">
+https://docs.google.com/spreadsheets/d/1sbNBZ8MWUidqV18jcwVsG_Venw3ObWZd/edit?usp=sharing&ouid=112907135514416036558&rtpof=true&sd=true
