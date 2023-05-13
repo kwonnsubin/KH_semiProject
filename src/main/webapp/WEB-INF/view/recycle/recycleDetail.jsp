@@ -14,7 +14,7 @@
 <jsp:include page="/WEB-INF/view/header.jsp"/>
 <div class="container">
 	<c:forEach var="recycleList" items="${data }">
-		<img alt="" src="${recycleList.img}" class="rounded float-start" style="width:500px; height:500px;">
+		<img src="<%=request.getContextPath()%>/resources/img/${recycleList.img}" class="rounded float-start" style="width:500px; height:500px;">
 		<div class="mb-5">
 			<h1 >${recycleList.recycle_name}</h1>
 		</div>

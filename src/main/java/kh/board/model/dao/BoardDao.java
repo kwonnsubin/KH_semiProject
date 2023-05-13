@@ -171,6 +171,7 @@ public class BoardDao {
 	
 	// 게시판 작성()
 	public int Writing(Connection conn, BoardVo vo) {
+		System.out.println("dao: " + vo.getCategory());
 		int result = -1;
 		String sql = "INSERT INTO BOARD_T VALUES(?,?,?,?,?,CURRENT_TIMESTAMP,?)";
 		PreparedStatement pstmt = null;

@@ -51,8 +51,6 @@ public class ReplyDeleteController extends HttpServlet {
 		} else { // 로그인이 안되어있으면
 			reply_no= Integer.parseInt(request.getParameter("reply_no"));
 			reply_pwd = request.getParameter("reply_pwd");
-			board_no = Integer.parseInt(request.getParameter("board_no"));
-			System.out.println("contoller"+board_no);
 			//2. DB다녀오기
 			int result = new BoardService().replyDelete(reply_no, reply_pwd);
 			if(result < 1) {

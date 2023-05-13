@@ -23,18 +23,18 @@
 		<form action="login" method="post">
 				<div class="row justify-content-center mb-3 mt-3">
 					<div class="col-2 ">
-						<lable class="control-label">이메일</lable>	
+						<label class="control-label">이메일</label>	
 					</div>
 					<div class="col-4">
-						<input class="form-control " type="text" name="email">	
+						<input class="form-control " type="text" name="email" required>	
 					</div>
 				</div>
 				<div class="row justify-content-center mb-4">
 					<div class="col-2">
-						<lable class="control-label">비밀번호</lable>
+						<label class="control-label">비밀번호</label>
 					</div>
 					<div class="col-4">
-						<input class="form-control " type="password" name="pwd">
+						<input class="form-control " type="password" name="pwd" required>
 					</div>
 				</div>
 				<div class="row justify-content-center mb-3">

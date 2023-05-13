@@ -30,8 +30,8 @@
 			</div>
 			<div class="col-10 mb-3">
 				<select name="category" class="form-select">
-				  <option selected value="0">분류 선택</option>
-				  <option value="1">질문</option>
+				  <option value="0">분류 선택</option>
+				  <option selected value="1">질문</option>
 				  <option value="2">팁/정보</option>
 				  <option value="3">의견/제안</option>
 				  <option value="4">뉴스</option>

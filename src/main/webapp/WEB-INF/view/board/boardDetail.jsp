@@ -14,7 +14,7 @@
 <style>
     .vertical-align {
         display: flex;
-        align-items: center;
+        align-items: end;
         font-weight: bold; 
     }
     
@@ -69,7 +69,7 @@
 				<c:if test="${empty lgnss}">
 					<div class="row mb-3">
 							<div class="col-2 vertical-align">
-								<label class="form-label" for="comment_writer">작성자</label>
+								<label class="form-label text-center" for="comment_writer">작성자</label>
 							</div>
 							<div class="col">
 								<input class="form-control" type="text" name="writer" placeholder="작성자" id="comment_writer">				
@@ -77,7 +77,7 @@
 					</div>
 					<div class="row mb-3">
 							<div class="col-2 vertical-align">	
-								<label class="form-label" for="comment_pw">비밀번호</label>
+								<label class="form-label text-center" for="comment_pw">비밀번호</label>
 							</div>	
 							<div class="col">
 								<input class="form-control" type="password" name="pwd" placeholder="비밀번호" id="comment_pw">					
@@ -98,39 +98,26 @@
 		</div>
 		<!-- 댓글 작성 {e} -->
 		<!-- 댓글 리스트 {s} -->
-		<table class="table bg-light" style="width: 100%;">
-		    <c:forEach var="replyList" items="${replyList}">
-		        <tr>
-		            <td class="border-bottom-0 border-top" style="#ccc;">
-		                <div style="display: flex; align-items: center;"">
-		                    <div style="font-weight: bold;" class="me-3">${replyList.reply_writer}</div>
-		                    <div style="color: #777;" class="me-3"><fmt:formatDate value="${replyList.reply_regdate}" pattern="yyyy.MM.dd"/></div>
-		                	<a class="me-3" style="text-decoration: none;" onclick="location.href='<%=request.getContextPath()%>/replyUpdate?reply_no=${replyList.reply_no}'">수정</a>
-		                	<a class="me-3" style="text-decoration: none;" onclick="location.href='<%=request.getContextPath()%>/replyUpdate?reply_no=${replyList.reply_no}'">삭제</a>
-		                </div>
-		            </td>
-<%-- 		            <td style="padding: 10px;">
- 		                <form action="<%=request.getContextPath()%>/replyDelete" method="post" class="d-inline">
-		                    <input type="hidden" name="board_no" value="<%=request.getParameter("board_no")%>">
-		                    <button class="btn btn-outline-primary delete me-2" type="submit" id="btn_delete_reply">삭제</button>
-		                    <div class="d-inline">
-		                        <c:if test="${empty lgnss}">
-		                            <label class="d-inline" for="boardPw">비밀번호</label>
-		                            <input class="d-inline form-control w-25" type="password" name="reply_pwd" id="boardPw">
-		                        </c:if>
-		                        <input class="d-inline" type="hidden" name="reply_no" value="${replyList.reply_no}">
-		                    </div>
-		                </form>
-		            </td> --%>
-		        </tr>
-		        <tr>
-		            <td colspan="2" style="padding: 10px; background-color: #f8f8f8;">${replyList.reply_content}</td>
-		        </tr>
-		    </c:forEach>
-		</table>
+		<c:forEach var="replyList" items="${replyList}">
+			<table class="table bg-light" style="width: 100%;" id="${replyList.reply_no}">
+			        <tr>
+			            <td class="border-bottom-0 border-top" style="#ccc;">
+			                <div style="display: flex; align-items: center;"">
+			                    <div style="font-weight: bold;" class="me-3">${replyList.reply_writer}</div>
+			                    <div style="color: #777;" class="me-3"><fmt:formatDate value="${replyList.reply_regdate}" pattern="yyyy.MM.dd"/></div>
+			                	<%-- <a class="me-3" style="text-decoration: none;" onclick="location.href='<%=request.getContextPath()%>/replyUpdate?reply_no=${replyList.reply_no}'">수정</a> --%>
+			                	<a class="me-3" style="text-decoration: none;" onclick="updateReplyForm('${replyList.reply_no}', '${replyList.reply_writer}', '${replyList.reply_regdate}', '${replyList.reply_content}')">수정</a>
+			                	<a class="me-3" style="text-decoration: none;" onclick="deleteReply('${replyList.reply_no}')">삭제</a>
+			                	<input type="hidden" name="lgnss" value="${lgnss}">
+			                </div>
+			            </td>
+			        </tr>
+			        <tr>
+			            <td colspan="2" style="padding: 10px; background-color: #f8f8f8;">${replyList.reply_content}</td>
+			        </tr>
+			</table>
+		</c:forEach>
 		<!-- 댓글 리스트 {e} -->
-
-
 	<!-- 게시글 하단-->
 	<div class="mb-3 mt-4">
 		<button class="btn btn-outline-primary me-2" onclick="location.href='<%=request.getContextPath()%>/board'">목록</button>
@@ -142,32 +129,100 @@
 </body>
 <script>
 
-// 댓글 수정
-<%-- $(".btn.update").on("click", handlerClickBtnUpdate);
-function handlerClickBtnUpdate() {
-	console.log("btnUpdate 눌림");
-	location.href="<%=request.getContextPath()%>/boardUpdate?board_no=${boardList.board_no }";
-} --%>
+// 댓글 수정 ajax
+function updateReplyForm(reply_no, reply_writer, reply_regdate, reply_content) {
+    var reply_no = reply_no;
+    var reply_writer = reply_writer;
+    var reply_regdate = reply_regdate;
+    var reply_content = reply_content;
+
+    console.log($("input[name='lgnss']").val());
+
+    var html = '';
+
+    var date = new Date(reply_regdate);
+    var month = date.getMonth() + 1; // 월 가져오기
+    var day = date.getDate(); // 일 가져오기
+    var year = date.getFullYear(); // 년도 가져오기
+
+    // 월과 일이 10보다 작을 경우 앞에 0을 붙여주기
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (day < 10) {
+        day = "0" + day;
+    }
+
+    var formattedDate = year + "." + month + "." + day; // 작성일자 포맷팅
+
+    html += '<table class="table bg-light" style="width: 100%;" id="' + reply_no + '">';
+    html += '    <tr>';
+    html += '        <td class="border-bottom-0 border-top" style="#ccc;">';
+    html += '            <div style="display: flex; align-items: center;">';
+    html += '                <div style="font-weight: bold;" class="me-3">' + reply_writer + '</div>';
+    html += '                <div style="color: #777;" class="me-3">' + formattedDate + '</div>';
+    html += '                <a class="me-3" style="text-decoration: none;" onclick="updateReply(\'' + reply_no + '\')">저장</a>';
+    html += '                <a class="me-3" style="text-decoration: none;" onclick="deleteReply(\'' + reply_no + '\')">취소</a>';
+    html += '                <input type="hidden" name="lgnss" value="${lgnss}">';
+    html += '            </div>';
+    html += '        </td>';
+    html += '    </tr>';
+    html += '    <tr>';
+    html += '        <td colspan="2" style="padding: 10px; background-color: #f8f8f8;">';
+    html += '            <input class="form-control" type="text" name="reply_content">';
+    html += '        </td>';
+    html += '    </tr>';
+    html += '</table>';
+
+    $("#" + reply_no).html(html);
+}
+
+
+
 
 // 댓글 삭제 ajax
-$("#btn_delete_reply").on("click", handlerClickBtnDeleteReply);
-function handlerClickBtnDeleteReply() {
-var reply_no = $("input[name='reply_no']").val(); // $()안에는 따옴표로 감싸야한다.
+ function deleteReply(reply_no, reply_) {
+	var reply_no = reply_no;
+	console.log(reply_no);
+	console.log($("input[name='lgnss']").val());
+ 	if (!$("input[name='lgnss']").val()) {
+		var reply_pwd = prompt("비밀번호를 입력해주세요.");
+	}
 	
-    $.ajax({
-        url: '<%=request.getContextPath()%>/admin/qna/selectAnswerCount',
-        data: {reply_no: reply_no},
+     $.ajax({
+        url: '<%=request.getContextPath()%>/replyDelete',
+        data: {reply_no: reply_no, reply_pwd: reply_pwd},
         type: "POST",
         success: function(result) {
-            html += result;
-            $('#answersCount').text(html);
+        	location.reload();
         },
         error: function() {
             alert("답변수 요청 실패!");
         }
-    });	
-	
+    });
 }
+
+// 댓글 수정 ajax
+	function updateReply(reply_no) {
+		var reply_no = reply_no;
+		var reply_content = $("input[name='reply_content']").val();
+		
+	 	if (!$("input[name='lgnss']").val()) {
+			var reply_pwd = prompt("비밀번호를 입력해주세요.");
+		}
+	 	
+	     $.ajax({
+	         url: '<%=request.getContextPath()%>/replyUpdate',
+	         data: {reply_no: reply_no, reply_pwd: reply_pwd, reply_content: reply_content},
+	         type: "POST",
+	         success: function(result) {
+	         	location.reload();
+	         },
+	         error: function() {
+	             alert("답변수 요청 실패!");
+	         }
+	     });
+} 
 
 </script>
 </html>

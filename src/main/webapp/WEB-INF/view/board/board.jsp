@@ -30,7 +30,15 @@
 		<c:forEach var="data" items="${requestScope.paging.page }">
 		<tbody>
 			<tr>
-				<td class="text-center">${data.category }</td>
+				<td class="text-center" style="width: 150px;">
+				    <c:choose>
+				        <c:when test="${data.category eq 1}">질문</c:when>
+				        <c:when test="${data.category eq 2}">팁/정보</c:when>
+				        <c:when test="${data.category eq 3}">의견/제안</c:when>
+				        <c:when test="${data.category eq 4}">뉴스</c:when>
+				        <c:when test="${data.category eq 5}">기타</c:when>
+				    </c:choose>
+				</td>
 				<td><a style="text-decoration: none;" href="<%=request.getContextPath()%>/boardDetail?board_no=${data.board_no}">${data.title }</a></td>
 				<td class="text-center">${data.writer }</td>
 				<td class="text-center"><fmt:formatDate value="${data.regdate }" pattern="yyyy.MM.dd"/></td>

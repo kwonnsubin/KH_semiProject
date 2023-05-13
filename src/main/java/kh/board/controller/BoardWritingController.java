@@ -40,7 +40,9 @@ public class BoardWritingController extends HttpServlet {
 		if(request.getSession().getAttribute("lgnss") != null) { // 로그인이 되어있으면
 
 			vo.setTitle(request.getParameter("title"));
-			//vo.setCategory(Integer.parseInt(request.getParameter("category")));			
+			int category = Integer.parseInt(request.getParameter("category"));
+			System.out.println("controller: " + category);
+			vo.setCategory(category);		
 			vo.setWriter(((MemberVo)(request.getSession().getAttribute("lgnss"))).getNickname());
 			vo.setPwd(((MemberVo)(request.getSession().getAttribute("lgnss"))).getPwd());
 			vo.setContent(request.getParameter("content"));
@@ -56,7 +58,9 @@ public class BoardWritingController extends HttpServlet {
 
 		} else { // 로그인이 안되어있으면
 			vo.setTitle(request.getParameter("title"));
-			//vo.setCategory(Integer.parseInt(request.getParameter("category")));
+			int category = Integer.parseInt(request.getParameter("category"));
+			System.out.println("controller: " + category);
+			vo.setCategory(category);
 			vo.setWriter(request.getParameter("writer"));
 			vo.setContent(request.getParameter("content"));
 			vo.setPwd(request.getParameter("pwd"));

@@ -36,7 +36,6 @@ public class BoardDetailController extends HttpServlet {
 		String board_no = request.getParameter("board_no");
 		System.out.println("board_no: " + board_no);
 		int bno = Integer.parseInt(board_no);
-		System.out.println("bno:" + bno);
 		
 		// 게시판 목록
 		List<BoardVo> result1 = null;

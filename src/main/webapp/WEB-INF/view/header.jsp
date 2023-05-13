@@ -5,7 +5,7 @@
 	<div class="container-lg mb-5 mt-6">
 		<nav class="navbar">
     		<a class="navbar-brand me-auto p-2" href="#">
-     			 <img src="https://image.jtbcplus.kr/data/contents/jam_photo/202003/16/77520654-2478-4712-ab4b-69e00d187dbb.jpg" alt="Bootstrap" width="300" height="50" onclick="location.href='<%=request.getContextPath()%>/recycle'">
+     			 <img src="<%=request.getContextPath()%>/resources/img/쓰레기백과사전.png" alt="Bootstrap" width="200" height="30" onclick="location.href='<%=request.getContextPath()%>/recycle'">
     		</a>
 			<div class="d-flex justify-content-end">
 				<c:choose>
@@ -17,7 +17,6 @@
 					</c:otherwise>
 				</c:choose>
 						<button type="button" class="btn board me-2">커뮤니티</button>
-						<button type="button" class="btn mypage me-2">마이페이지</button>	
 					 <form class="d-flex" role="search">
 						<div class="search d-flex">
 							<div>
@@ -31,19 +30,14 @@
 		<div class="d-flex justify-content-end row">
 			<div class="list-group col-3">
 				<div id="reclcye_List">
-					<!-- <form action="<%=request.getContextPath()%>/recycleDetail" method="post" id="recycleDetail">
-					
-						</form>
-					-->	
 				</div>
 				<div id="img">
-				
-				
 				</div>
 			</div>
 		</div>
 </div>
 </header>
+</html>
 	<script type="text/javascript">
 		$(".btn.login").on("click", handlerClickBtnLogin);
 		$(".btn.logout").on("click", handlerClickBtnLogout);
@@ -70,5 +64,28 @@
 			console.log("btnMypage 눌림");
 			location.href="<%=request.getContextPath()%>/mypage";
 		}
+		
+ 		function search(t) {
+			$.ajax({
+				  url: "<%=request.getContextPath()%>/recycleSearch"
+				, type: "post"
+				, data: {recycle_name: $(t).val()}
+				, success: function(data){
+					console.log(data)
+					var htmlContent = "";
+					data.forEach((recycleList) => {
+						recycleName ="<a href='<%=request.getContextPath()%>/recycleDetail?recycleCode="+recycleList.recycle_code+"'class='list-group-item list-group-item-action' class='1'>"+recycleList.recycle_name+"</a>";
+						img = "<img src='<%=request.getContextPath()%>/resources/img/" + recycleList.img + "' style='width:100px; height:100px;'>";
+					})
+					//console.log(recycleList.img);
+					$("#reclcye_List").html(recycleName);
+					$("#img").html(img);
+					//$("#recycleDetail").append(recycleName);
+					//$("#recycleDetail").append(recycleCode);
+				}
+				,   error: function(data) {
+						alert("실페");
+					}
+			});
+		}
 	</script>
-</html>
