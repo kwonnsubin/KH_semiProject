@@ -75,5 +75,6 @@ Version Management System : Git (Github Desktop)
 https://docs.google.com/presentation/d/1p4_CDNj-eKKnKpVJDsKBclZQUTaxA8bs/edit?usp=sharing&ouid=112907135514416036558&rtpof=true&sd=true
 
 ## 테이블명세서
-<img width="965" alt="image" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/3b740a85-4afa-4d61-8cfc-88483f9524db">
 https://docs.google.com/spreadsheets/d/1sbNBZ8MWUidqV18jcwVsG_Venw3ObWZd/edit?usp=sharing&ouid=112907135514416036558&rtpof=true&sd=true
+
+<img width="965" alt="image" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/3b740a85-4afa-4d61-8cfc-88483f9524db">
