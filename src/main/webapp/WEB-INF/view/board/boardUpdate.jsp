@@ -39,16 +39,6 @@
 				</select>
 			</div>
 		</div>
-		<c:if test="${empty lgnss}">
-			<div class="mb-3 row">
-				<div class="col-2">
-					<label for="inputPassword" class="align-middle ">비밀번호</label>	 
-				</div>
-				<div class="col-4">
-		      		<input type="password" name="pwd" class="form-control">
-	    		</div>
-			</div>
-		</c:if>
 		<div class="mb-3">
 			<label for="exampleFormControlTextarea1" class="form-label "></label>
 			<textarea class="form-control" name="content" rows="3" style="height: 500px;"></textarea>

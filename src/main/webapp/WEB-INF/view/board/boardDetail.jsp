@@ -102,39 +102,43 @@
 			<table class="table bg-light" style="width: 100%;" id="${replyList.reply_no}">
 			        <tr>
 			            <td class="border-bottom-0 border-top" style="#ccc;">
-			                <div style="display: flex; align-items: center;"">
+			                <div style="display: flex; align-items: center;">
 			                    <div style="font-weight: bold;" class="me-3">${replyList.reply_writer}</div>
 			                    <div style="color: #777;" class="me-3"><fmt:formatDate value="${replyList.reply_regdate}" pattern="yyyy.MM.dd"/></div>
-			                	<%-- <a class="me-3" style="text-decoration: none;" onclick="location.href='<%=request.getContextPath()%>/replyUpdate?reply_no=${replyList.reply_no}'">수정</a> --%>
-			                	<a class="me-3" style="text-decoration: none;" onclick="updateReplyForm('${replyList.reply_no}', '${replyList.reply_writer}', '${replyList.reply_regdate}', '${replyList.reply_content}')">수정</a>
-			                	<a class="me-3" style="text-decoration: none;" onclick="deleteReply('${replyList.reply_no}')">삭제</a>
+			                    <c:if test="${lgnss.nickname eq replyList.reply_writer}">
+				                	<a class="me-3" style="text-decoration: none;" onclick="updateReplyForm('${replyList.reply_no}', '${replyList.reply_writer}', '${replyList.reply_regdate}')">수정</a>
+				                	<a class="me-3" style="text-decoration: none;" onclick="deleteReply('${replyList.reply_no}', '${boardList.board_no}')">삭제</a>
+			                	</c:if>
 			                	<input type="hidden" name="lgnss" value="${lgnss}">
 			                </div>
 			            </td>
 			        </tr>
 			        <tr>
-			            <td colspan="2" style="padding: 10px; background-color: #f8f8f8;">${replyList.reply_content}</td>
+			            <td colspan="2" style="padding: 10px; background-color: #f8f8f8;" id=replycontent>${replyList.reply_content}</td>
 			        </tr>
 			</table>
 		</c:forEach>
 		<!-- 댓글 리스트 {e} -->
 	<!-- 게시글 하단-->
-	<div class="mb-3 mt-4">
-		<button class="btn btn-outline-primary me-2" onclick="location.href='<%=request.getContextPath()%>/board'">목록</button>
-		<button class="btn btn-outline-primary update me-2">수정</button>
-		<button class="btn delete btn-outline-primary  me-2" onclick="location.href='<%=request.getContextPath()%>/boardDelete?board_no=${boardList.board_no }'">삭제</button>
-	</div>
+		<div class="mb-3 mt-4">
+			<button class="btn btn-outline-primary me-2" onclick="location.href='<%=request.getContextPath()%>/board'">목록</button>
+			<c:if test="${lgnss.nickname eq boardList.writer}">
+			    <button class="btn btn-outline-primary update me-2" onclick="location.href='<%=request.getContextPath()%>/boardUpdate?board_no=${boardList.board_no}'">수정</button>
+			    <button class="btn delete btn-outline-primary me-2" onclick="boardDelete()">삭제</button>
+			</c:if>
+			<input type="hidden" name="login-nickname" value="${lgnss.nickname}">
+		</div>
 	</c:forEach>
 </div>
 </body>
 <script>
 
-// 댓글 수정 ajax
-function updateReplyForm(reply_no, reply_writer, reply_regdate, reply_content) {
+// 댓글 수정폼 ajax
+function updateReplyForm(reply_no, reply_writer, reply_regdate) {
     var reply_no = reply_no;
     var reply_writer = reply_writer;
     var reply_regdate = reply_regdate;
-    var reply_content = reply_content;
+    var replycontent = ($("input[name='replycontent']").val());
 
     console.log($("input[name='lgnss']").val());
 
@@ -162,7 +166,6 @@ function updateReplyForm(reply_no, reply_writer, reply_regdate, reply_content) {
     html += '                <div style="font-weight: bold;" class="me-3">' + reply_writer + '</div>';
     html += '                <div style="color: #777;" class="me-3">' + formattedDate + '</div>';
     html += '                <a class="me-3" style="text-decoration: none;" onclick="updateReply(\'' + reply_no + '\')">저장</a>';
-    html += '                <a class="me-3" style="text-decoration: none;" onclick="deleteReply(\'' + reply_no + '\')">취소</a>';
     html += '                <input type="hidden" name="lgnss" value="${lgnss}">';
     html += '            </div>';
     html += '        </td>';
@@ -181,28 +184,28 @@ function updateReplyForm(reply_no, reply_writer, reply_regdate, reply_content) {
 
 
 // 댓글 삭제 ajax
- function deleteReply(reply_no, reply_) {
+ function deleteReply(reply_no, board_no) {
 	var reply_no = reply_no;
+	var board_no = board_no;
 	console.log(reply_no);
-	console.log($("input[name='lgnss']").val());
- 	if (!$("input[name='lgnss']").val()) {
-		var reply_pwd = prompt("비밀번호를 입력해주세요.");
+	if (confirm("삭제하시겠습니까?")) { 
+     	$.ajax({
+	        url: '<%=request.getContextPath()%>/replyDelete',
+	        data: {reply_no: reply_no, board_no: board_no},
+	        type: "POST",
+	        success: function(result) {
+	        	alert("삭제되었습니다.")
+	        	location.reload();
+	        },
+	        error: function() {
+	            alert("답변수 요청 실패!");
+	        }
+	    });
 	}
 	
-     $.ajax({
-        url: '<%=request.getContextPath()%>/replyDelete',
-        data: {reply_no: reply_no, reply_pwd: reply_pwd},
-        type: "POST",
-        success: function(result) {
-        	location.reload();
-        },
-        error: function() {
-            alert("답변수 요청 실패!");
-        }
-    });
 }
 
-// 댓글 수정 ajax
+// 댓글 수정 저장 ajax
 	function updateReply(reply_no) {
 		var reply_no = reply_no;
 		var reply_content = $("input[name='reply_content']").val();
@@ -223,6 +226,26 @@ function updateReplyForm(reply_no, reply_writer, reply_regdate, reply_content) {
 	         }
 	     });
 } 
+
+// 글 삭제
+	function boardDelete() {
+		var board_no = $("input[name='board_no']").val();
+		console.log(board_no);
+		  if (confirm("삭제하시겠습니까?")) {
+		    $.ajax({
+		        url: '<%=request.getContextPath()%>/boardDelete',
+		        data: {board_no: board_no},
+		        type: "POST",
+		        success: function(result) {
+		        	alert("삭제되었습니다.")
+		        	location.href = '<%=request.getContextPath()%>/board';
+		        },
+		        error: function() {
+		            alert("답변수 요청 실패!");
+		        }
+		    });
+		  }
+	}
 
 </script>
 </html>

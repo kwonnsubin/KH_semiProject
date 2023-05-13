@@ -44,6 +44,7 @@ public class LoginController extends HttpServlet {
 		if(result != null) {
 			System.out.println("로그인 성공");
 			request.getSession().setAttribute("lgnss", result);
+			System.out.println(result);
 		} else {
 			System.out.println("로그인 실패");
 		}
