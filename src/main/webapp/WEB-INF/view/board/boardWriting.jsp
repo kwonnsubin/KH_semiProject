@@ -52,7 +52,7 @@
 		      		<label for="inputPassword" class="align-middle ">비밀번호</label>	      	
 		      	</div>
 		    	<div class="col-4">
-		      		<input type="text"id="inputPassword" name="pwd" class="form-control">
+		      		<input type="password"id="inputPassword" name="pwd" class="form-control">
 	    		</div>
 			</div>
 		</c:if>

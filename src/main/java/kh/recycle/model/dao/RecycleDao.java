@@ -31,11 +31,7 @@ public class RecycleDao {
 				vo.setCf_code(rs.getInt(1));
 				vo.setRecycle_code(rs.getInt(2));
 				vo.setRecycle_name(rs.getString(3));
-				vo.setImg(rs.getString(4));
-//				vo.setRecycle_tag(rs.getString(4));
-//				vo.setRecycle_check(rs.getString(5));
-//				vo.setContent(rs.getString(6));
-//				vo.setCf_name(rs.getString(7));					
+				vo.setImg(rs.getString(4));				
 				result.add(vo); // vo에 저장한 값들을 ArrayList에 추가
 
 			}

@@ -71,17 +71,13 @@
 				, type: "post"
 				, data: {recycle_name: $(t).val()}
 				, success: function(data){
-					console.log(data)
 					var htmlContent = "";
 					data.forEach((recycleList) => {
 						recycleName ="<a href='<%=request.getContextPath()%>/recycleDetail?recycleCode="+recycleList.recycle_code+"'class='list-group-item list-group-item-action' class='1'>"+recycleList.recycle_name+"</a>";
 						img = "<img src='<%=request.getContextPath()%>/resources/img/" + recycleList.img + "' style='width:100px; height:100px;'>";
 					})
-					//console.log(recycleList.img);
 					$("#reclcye_List").html(recycleName);
 					$("#img").html(img);
-					//$("#recycleDetail").append(recycleName);
-					//$("#recycleDetail").append(recycleCode);
 				}
 				,   error: function(data) {
 						alert("실페");
