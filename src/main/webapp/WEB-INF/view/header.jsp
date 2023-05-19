@@ -80,7 +80,7 @@
 					$("#img").html(img);
 				}
 				,   error: function(data) {
-						alert("실페");
+						alert("실패");
 					}
 			});
 		}

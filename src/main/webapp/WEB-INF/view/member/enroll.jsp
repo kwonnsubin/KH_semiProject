@@ -19,6 +19,7 @@
 				<div class="mb-3">
 					<label for="exampleFormControlInput1" class="form-label">E-mail주소</label>
 					<input type="text" name="email" id="exampleFormControlInput1" class="form-control" required>
+					<span id="emailError" style="color:red; display:none;">중복된 이메일입니다.</span>
 				</div>
 				<div class="mb-3">
 					<label for="exampleFormControlInput2" class="form-label">비밀번호</label>
@@ -40,16 +41,36 @@
 </body>
 <script>
 $("#enrollForm").submit(function() {
+    var email = $("input[name=email]").val();
     var pw = $("input[name=pwd]").val();
     var pwdcheck = $("input[name=pwdcheck]").val();
     
-    if(pw != pwdcheck) {
-        $("#pwdcheckError").show();
-        return false;
-    } else {
-        alert("회원가입이 완료되었습니다.");
-        return true;
-    }
+    // 이메일 중복 검사를 위한 AJAX 요청
+    $.ajax({
+        url: '<%=request.getContextPath()%>/enroll',
+        data: { email: email, pwd: pw, pwdcheck: pwdcheck },
+        type: "POST",
+        success: function(result) {
+            if (result === "failure") {
+                $("#emailError").show();
+            } else if (result === "success") {
+                if (pw != pwdcheck) {
+                    $("#pwdcheckError").show();
+                } else {
+                    alert("회원가입이 완료되었습니다.");
+                    window.location.href = '<%=request.getContextPath()%>/login';
+                }
+            } else if (result === "password-mismatch") {
+            	$("#pwdcheckError").show();
+            }
+        },
+        error: function() {
+            alert("이메일 중복 검사 요청 실패!");
+        }
+    });
+    
+    return false; // 폼 제출 중단
 });
 </script>
+
 </html>

@@ -33,27 +33,27 @@ public class EnrollController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//1. 데이터 꺼내기
-		MemberVo vo = new MemberVo();
-		vo.setEmail(request.getParameter("email"));
-		vo.setPwd(request.getParameter("pwd"));
-		vo.setPwdcheck(request.getParameter("pwdcheck"));
-		vo.setNickname(request.getParameter("nickname"));
-		
+	    // 1. 데이터 꺼내기
+	    MemberVo vo = new MemberVo();
+	    vo.setEmail(request.getParameter("email"));
+	    vo.setPwd(request.getParameter("pwd"));
+	    vo.setPwdcheck(request.getParameter("pwdcheck"));
+	    vo.setNickname(request.getParameter("nickname"));
 
-		//2. DB 다녀오기
-		if(vo.getPwd().equals(vo.getPwdcheck())) {
-			int result = new EnrollService().enroll(vo);			
-			if(result < 1) {
-				System.out.println("회원가입실패");
-			} else {
-				System.out.println("회원가입성공");
-				response.sendRedirect(request.getContextPath()+"/");
-			}
-		} else {
-			System.out.println("비밀번호 틀림");
-		}
+	    // 2. DB 다녀오기
+	    if (vo.getPwd().equals(vo.getPwdcheck())) {
+	        int result = new EnrollService().enroll(vo);
+	        if (result < 1) {
+	            System.out.println("회원가입 실패");
+	            response.getWriter().write("failure"); // 실패 응답 전송
+	        } else {
+	            System.out.println("회원가입 성공");
+	            response.getWriter().write("success"); // 성공 응답 전송
+	        }
+	    } else {
+	        System.out.println("비밀번호 틀림");
+	        response.getWriter().write("password-mismatch"); // 비밀번호 불일치 응답 전송
+	    }
 	}
 	
 	
