@@ -25,10 +25,10 @@ Version Management System : Git (Github Desktop)
 
 ## 구현 기능
 ### 메인 페이지
-![메인페이지](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/a55080b1-83c1-4610-910c-0c9e25630d5b)
+![메인페이지](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/43da3c54-c50c-4117-9a26-9e3ac0301657)
 
 ### 검색
-![검색기능](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/0754f253-edc2-4491-9136-53a689690452)
+![메인페이지 검색](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/b26b5274-de65-4de6-bf21-4582d27138ba)
 
 - ajax를 활용한 실시간 검색 기능
 
@@ -36,12 +36,12 @@ Version Management System : Git (Github Desktop)
 
 <img width="1022" alt="스크린샷 2023-05-22 오후 1 32 04" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/6c71971d-0fad-45da-9322-6e6d96f2bc7f">
 
-<img width="866" alt="스크린샷 2023-05-22 오후 1 38 46" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/fe14b409-f5ba-4ec6-bd69-3b1beb26e37b">
-
 <img width="1059" alt="스크린샷 2023-05-22 오후 1 41 37" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/eb4de9b4-c1da-4480-a89e-c5f28f1232e1">
 
+<img width="866" alt="스크린샷 2023-05-22 오후 1 38 46" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/fe14b409-f5ba-4ec6-bd69-3b1beb26e37b">
+
 ### 회원가입
-![회원가입](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/51c26d20-372a-479f-83d1-ea5933ce7702)
+![회원가입](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/5996bfa1-00a9-4bbd-a4ee-91aa77e5da30)
 
 - 자바스크립트와 ajax를 활용한 이메일 중복확인, 비밀번호 일치 유효성 검사
 
@@ -50,31 +50,31 @@ Version Management System : Git (Github Desktop)
 <img width="596" alt="스크린샷 2023-05-22 오전 10 17 17" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/51b8a425-a597-42fd-9d4f-9f00998b27f8">
 
 ### 로그인/로그아웃
-![로그인,로그아웃](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/bea34c28-65af-462b-b2f3-0f07296c370c)
+![로그인로그아웃](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/4c767ff9-8f18-4bdb-9240-d9f6366ee214)
 
 ### 커뮤니티 
 #### 글 목록
-![게시판 목록](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/c9d0d228-21ad-46ef-98d3-d95d288b9811)
+![커뮤니티목록](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/ff3d96d3-533a-4ef3-ab20-eb130fcc2157)
 
 - 페이징 적용
 
 #### 글 작성
-![게시판 회원글작성](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/a1dea4ae-3ab9-421d-8063-bef340ed6969)
+![회원글작성](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/88caded7-a9f2-4036-bffc-317ec4c99552)
 
-![비회원 글작성](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/b68fa3af-d9be-4b40-b504-51090abf66b4)
+![비회원 글작성](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/80cd9403-f687-4cf0-9880-cce02629998a)
 
 - 회원/비회원 둘다 게시글 작성 가능
   - 비회원 일땐 아이디, 비밀번호 입력
 
 #### 글 수정, 삭제
-![글 수정,삭제](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/f10e0cf6-f01a-424f-8f32-fff84956e442)
+![글수정삭제](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/158ac6ad-1e18-4d38-a156-815520e77254)
 
 - session에 저장된 로그인된계정 nickname과 글 작성자의 아이디가 같을 시 수정, 삭제 버튼이 활성화
 
 <img width="1213" alt="스크린샷 2023-05-22 오전 10 32 43" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/b91f606e-6f3b-4983-94a0-53deeff6962c">
 
 #### 댓글 작성, 수정, 삭제
-![댓글 작성수정삭제](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/92b75182-565b-49c2-a54a-d6b95bd42ec7)
+![댓글작성수정삭제](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/439743fe-375e-414b-99f5-e7e9c202b902)
 
 - 로그인한 아이디와 댓글 작성자의 아이디가 같을 시 수정, 삭제 버튼이 활성화
   - 각 댓글마다 고유번호id를부여하여 댓글 수정 시 해당번호의 댓글이 수정할 수 있는 수정폼으로 변경된다.
