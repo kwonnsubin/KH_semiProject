@@ -34,11 +34,11 @@ Version Management System : Git (Github Desktop)
 
 <img width="704" alt="스크린샷 2023-05-22 오전 10 13 06" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/768b9998-95e2-44e7-8a26-c945612c8a2e">
 
-<img width="1023" alt="스크린샷 2023-05-13 오후 10 00 30" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/c7d9bd0e-dde8-40fe-9f7b-a63244dc8df0">
+<img width="1022" alt="스크린샷 2023-05-22 오후 1 32 04" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/6c71971d-0fad-45da-9322-6e6d96f2bc7f">
 
-<img width="1244" alt="스크린샷 2023-05-13 오후 10 06 20" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/55c35a29-47ce-4df8-9413-6b8e5a8402f6">
+<img width="866" alt="스크린샷 2023-05-22 오후 1 38 46" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/fe14b409-f5ba-4ec6-bd69-3b1beb26e37b">
 
-<img width="866" alt="스크린샷 2023-05-13 오후 10 08 00" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/68a3fc12-c598-4984-9d4a-dc7098cddd8e">
+<img width="1059" alt="스크린샷 2023-05-22 오후 1 41 37" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/eb4de9b4-c1da-4480-a89e-c5f28f1232e1">
 
 ### 회원가입
 ![회원가입](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/51c26d20-372a-479f-83d1-ea5933ce7702)
