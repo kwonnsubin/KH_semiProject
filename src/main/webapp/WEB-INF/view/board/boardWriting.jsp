@@ -43,16 +43,16 @@
 		<c:if test="${empty lgnss}">
 			 <div class="mb-3 row">
 				 <div class="col-2">
-			   		<label for="inputPassword" class="align-middle">작성자</label>		 
+			   		<label for="inputwriter" class="align-middle">작성자</label>		 
 				 </div>
 		    	<div class="col-4">
-		      		<input type="text"id="inputPassword" name="writer" class="form-control">
+		      		<input type="text"id="inputwriter" name="writer" class="form-control" required>
 		      	</div>
 		      	<div class="col-2 text-center">
 		      		<label for="inputPassword" class="align-middle ">비밀번호</label>	      	
 		      	</div>
 		    	<div class="col-4">
-		      		<input type="password"id="inputPassword" name="pwd" class="form-control">
+		      		<input type="password"id="inputPassword" name="pwd" class="form-control" required>
 	    		</div>
 			</div>
 		</c:if>
