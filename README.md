@@ -9,17 +9,17 @@
 프로젝트 구현기간 : 2023-02-16 ~ 2023-02-23
 
 ## 개발 환경
-OS : Microsoft Window 10, MacOS Ventura
+OS : Window 10(x64)
 <br>
 Language : Java11, Servlet/JSP, HTML5, JavaScript, CSS, JSP/Servlet
 <br>
-Web Application Server : Apache Tomcat 9.0
+Web Application Server : Apache-Tomcat 9.0
 <br>
 DataBase : Oracle 21c Express Edition
 <br>
-Framework : Bootstrap5, jQuery, Ajax
+Framework : Bootstrap5, jQuery, Ajax, Gson(2.8.5), Json(1.1.1)
 <br>
-Developer Tool : Eclipse, SQL Developer, Dbeaver
+Developer Tool : Eclipse(2020-09), SQL Developer(22.2.1.234), DBeaver(22.2.4)
 <br>
 Version Management System : Git (Github Desktop)
 
