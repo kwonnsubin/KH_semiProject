@@ -32,7 +32,7 @@ Version Management System : Git (Github Desktop)
 
 - ajax를 활용한 실시간 검색 기능
 
-<img width="704" alt="스크린샷 2023-05-22 오전 10 13 06" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/c40c292f-e40e-43bc-ac02-3f62842e6e21">
+<img width="704" alt="스크린샷 2023-05-22 오전 10 13 06" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/768b9998-95e2-44e7-8a26-c945612c8a2e">
 
 <img width="1023" alt="스크린샷 2023-05-13 오후 10 00 30" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/c7d9bd0e-dde8-40fe-9f7b-a63244dc8df0">
 
@@ -45,9 +45,9 @@ Version Management System : Git (Github Desktop)
 
 - 자바스크립트와 ajax를 활용한 이메일 중복확인, 비밀번호 일치 유효성 검사
 
-<img width="785" alt="스크린샷 2023-05-22 오전 10 21 58" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/497ce072-dfcb-42e9-b9c1-495c6ddb3965">
+<img width="785" alt="스크린샷 2023-05-22 오전 10 21 58" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/e20cf974-dfbe-42d3-832c-8043c0bf2ad2">
 
-<img width="596" alt="스크린샷 2023-05-22 오전 10 17 17" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/43900c8b-20a6-4410-97d1-f7aede255a78">
+<img width="596" alt="스크린샷 2023-05-22 오전 10 17 17" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/51b8a425-a597-42fd-9d4f-9f00998b27f8">
 
 ### 로그인/로그아웃
 ![로그인,로그아웃](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/bea34c28-65af-462b-b2f3-0f07296c370c)
@@ -71,7 +71,7 @@ Version Management System : Git (Github Desktop)
 
 - session에 저장된 로그인된계정 nickname과 글 작성자의 아이디가 같을 시 수정, 삭제 버튼이 활성화
 
-<img width="1213" alt="스크린샷 2023-05-22 오전 10 32 43" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/bd66facc-d7d2-48fa-817e-00a1b9bee45b">
+<img width="1213" alt="스크린샷 2023-05-22 오전 10 32 43" src="https://github.com/kwonnsubin/KH_semiProject/assets/108276943/b91f606e-6f3b-4983-94a0-53deeff6962c">
 
 #### 댓글 작성, 수정, 삭제
 ![댓글 작성수정삭제](https://github.com/kwonnsubin/KH_semiProject/assets/108276943/92b75182-565b-49c2-a54a-d6b95bd42ec7)
